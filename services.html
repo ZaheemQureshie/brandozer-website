@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Brandozer Services — Brand Identity, Paid Advertising, Social Media Management, Content Production, Website Design, SEO, Personal Branding, and more.">
+  <title>Services — Brandozer | Premium Marketing & Branding</title>
+  <link rel="canonical" href="services.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/animations.css?v=3">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .services-tab {
+      padding: 14px 24px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-family: var(--font-body);
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-ivory);
+      opacity: 0.7;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .services-tab.active,
+    .services-tab:hover {
+      color: var(--color-gold);
+      opacity: 1;
+      border-bottom-color: var(--color-gold);
+    }
+
+    .services-panel {
+      display: none;
+    }
+
+    .services-panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .service-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 20px 24px;
+      border-bottom: 1px solid #1A1A1A;
+      transition: var(--transition);
+    }
+
+    .service-row:hover {
+      background: rgba(201, 168, 76, 0.04);
+      border-left: 3px solid var(--color-gold);
+      padding-left: 21px;
+    }
+
+    .service-row-num {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      color: var(--color-ivory);
+      opacity: 0.5;
+      font-weight: 700;
+      min-width: 32px;
+      margin-top: 3px;
+    }
+
+    .service-row-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--color-gold);
+      margin-bottom: 6px;
+    }
+
+    .service-row-desc {
+      font-size: 14px;
+      color: var(--color-ivory);
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main"
+    style="position:absolute;left:-9999px;top:4px;z-index:99999;background:var(--color-gold);color:var(--color-black);padding:8px 16px;border-radius:4px;font-family:var(--font-body);">Skip
+    to content</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="loading-screen" aria-hidden="true"><span class="loader-logo">BRANDOZER</span>
+    <p class="loader-tagline">We Build Brands &amp; Elevate Them to Growth</p>
+  </div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-outline" aria-hidden="true"></div>
+
+      <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="index.html" class="nav-logo-link" aria-label="Brandozer Home">
+          <img src="assets/images/Brandozer_Logo.png" alt="Brandozer Logo" class="nav-logo-img">
+          <span class="nav-brand-text">BRANDOZER</span>
+        </a>
+      </div>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html" >About</a></li>
+        <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+        <li><a href="#" >Portfolio</a></li>
+        <li><a href="blog.html" >Blog</a></li>
+        <li><a href="contact.html" >Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="#">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  
+  
+
+  <main id="main">
+
+    <!-- ═══════ SECTION 1: HERO ═══════ -->
+    <section class="hero-section modern-hero" id="services-hero">
+
+      <div class="hero-watermark">SERVICES</div>
+
+      <div class="container">
+        <div class="hero-modern-container">
+          <div class="hero-tagline-wrap reveal">
+            <h1 class="hero-bold-tagline">
+              Premium Marketing & Branding<br>
+              <span style="color:var(--color-ivory);">Built for Growth</span>
+            </h1>
+          </div>
+
+          <div class="hero-character-wrap reveal">
+            <div class="hero-character-glow"></div>
+            <img src="assets/images/Services_Hero.png" alt="Brandozer Services" class="hero-character-img">
+          </div>
+
+          <div class="hero-desc-box reveal">
+            <div class="desc-content">
+              <p>From brand identity creation to global ad campaigns — every service is designed to build, elevate, and
+                drive measurable growth for your brand worldwide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES PILLARS with Tabs -->
+    <section style="background:var(--color-black);">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:48px;">
+          <p class="section-label reveal specialized-services-label" style="justify-content:center;">38 Specialized Services</p>
+          <h2 class="section-title reveal"><span style="color:var(--color-gold);">Everything Your Brand Needs</span> <br class="services-mobile-br"> <span style="color:var(--color-ivory);">Under One Roof</span></h2>
+        </div>
+
+        <!-- Tab bar -->
+        <div class="services-tab-container" style="display:flex;flex-wrap:wrap;border-bottom:1px solid #1A1A1A;margin-bottom:40px;gap:4px;"
+          role="tablist">
+          <button class="services-tab active" data-target="p1" role="tab" aria-selected="true">Brand Building</button>
+          <button class="services-tab" data-target="p2" role="tab">Social Media</button>
+          <button class="services-tab" data-target="p3" role="tab">Web Development</button>
+          <button class="services-tab" data-target="p4" role="tab">Advertisements</button>
+          <button class="services-tab" data-target="p5" role="tab">Content & Creative</button>
+        </div>
+
+        <!-- Panel 1: Brand Building -->
+        <div id="p1" class="services-panel active reveal" role="tabpanel">
+          <div class="service-row">
+            <div class="service-row-num">01</div>
+            <div>
+              <div class="service-row-title">Brand Strategy & Positioning</div>
+              <p class="service-row-desc">Defining your brand purpose, target audience, market perception, and unique
+                positioning for long-term growth.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">02</div>
+            <div>
+              <div class="service-row-title">Brand Naming & Tagline Development</div>
+              <p class="service-row-desc">Crafting memorable brand names, taglines, and messaging foundations that
+                create recall and authority.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">03</div>
+            <div>
+              <div class="service-row-title">Logo Design & Visual Identity</div>
+              <p class="service-row-desc">Designing a professional logo system, color direction, typography, and visual
+                elements that represent your brand.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">04</div>
+            <div>
+              <div class="service-row-title">Brand Guidelines Document</div>
+              <p class="service-row-desc">Creating a complete brand guide to ensure visual consistency, messaging
+                clarity, and professional usage across all platforms.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">05</div>
+            <div>
+              <div class="service-row-title">Brand Collateral Design</div>
+              <p class="service-row-desc">Designing business cards, social templates, presentations, stationery, and
+                marketing assets aligned with your identity.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">06</div>
+            <div>
+              <div class="service-row-title">Brand Communication Assets</div>
+              <p class="service-row-desc">Developing branded messaging, profile bios, introductory descriptions, and
+                customer-facing communication materials.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Social Media Management -->
+        <div id="p2" class="services-panel reveal" role="tabpanel">
+          <div class="service-row">
+            <div class="service-row-num">01</div>
+            <div>
+              <div class="service-row-title">Profile Optimization & Branding</div>
+              <p class="service-row-desc">Professional optimization of bios, highlights, call-to-actions, visual
+                consistency, and complete account presentation.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">02</div>
+            <div>
+              <div class="service-row-title">Social Media Strategy</div>
+              <p class="service-row-desc">Complete platform planning built around your business goals, audience
+                behavior, and long-term growth.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">03</div>
+            <div>
+              <div class="service-row-title">Content Calendar & Scheduling</div>
+              <p class="service-row-desc">Monthly content planning, post scheduling, and consistent publishing across
+                all active platforms.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">04</div>
+            <div>
+              <div class="service-row-title">Community Management</div>
+              <p class="service-row-desc">Daily audience engagement, inbox handling, comment moderation, and customer
+                relationship building.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">05</div>
+            <div>
+              <div class="service-row-title">Organic Growth Optimization</div>
+              <p class="service-row-desc">Platform-focused growth tactics designed to increase followers, reach,
+                engagement, and visibility.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">06</div>
+            <div>
+              <div class="service-row-title">Social Media Reporting</div>
+              <p class="service-row-desc">Detailed performance tracking, analytics review, and monthly KPI reporting for
+                continuous improvement.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Website Design & Development -->
+        <div id="p3" class="services-panel reveal" role="tabpanel">
+          <div class="service-row">
+            <div class="service-row-num">01</div>
+            <div>
+              <div class="service-row-title">Website Strategy & Wireframing</div>
+              <p class="service-row-desc">Planning the complete website structure, user journey, page hierarchy, and
+                conversion-focused wireframes before execution.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">02</div>
+            <div>
+              <div class="service-row-title">Custom UI/UX Website Design</div>
+              <p class="service-row-desc">Designing modern, engaging, and user-friendly website interfaces tailored to
+                your brand identity and audience.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">03</div>
+            <div>
+              <div class="service-row-title">Front-End Development</div>
+              <p class="service-row-desc">Developing clean, responsive, and interactive front-end experiences that
+                perform smoothly across all devices.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">04</div>
+            <div>
+              <div class="service-row-title">Full-Stack Web Development</div>
+              <p class="service-row-desc">Building dynamic, scalable, and high-performance web systems with custom
+                backend functionality and database integration.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">05</div>
+            <div>
+              <div class="service-row-title">CMS & E-Commerce Development</div>
+              <p class="service-row-desc">Creating easy-to-manage CMS websites, business portals, and conversion-driven
+                e-commerce stores with seamless functionality.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">06</div>
+            <div>
+              <div class="service-row-title">Web Automation & System Integration</div>
+              <p class="service-row-desc">Developing smart automations, CRM integrations, lead capture systems, workflow
+                automation, and business process solutions for efficiency.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">07</div>
+            <div>
+              <div class="service-row-title">Landing Pages & Funnels</div>
+              <p class="service-row-desc">Developing high-converting landing pages, sales funnels, ongoing optimization,
+                technical support, and long-term maintenance.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">08</div>
+            <div>
+              <div class="service-row-title">Search Engine Optimization (SEO)</div>
+              <p class="service-row-desc">On-page, off-page, and technical SEO to rank your brand higher and drive
+                consistent organic traffic.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Advertisements -->
+        <div id="p4" class="services-panel reveal" role="tabpanel">
+          <div class="service-row">
+            <div class="service-row-num">01</div>
+            <div>
+              <div class="service-row-title">Google Ads</div>
+              <p class="service-row-desc">High-intent search and display campaigns that capture customers actively
+                looking for your products or services.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">02</div>
+            <div>
+              <div class="service-row-title">Meta Ads (Facebook & Instagram)</div>
+              <p class="service-row-desc">Visually powerful ad campaigns that stop the scroll, build engagement, and
+                convert social audiences into leads.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">03</div>
+            <div>
+              <div class="service-row-title">TikTok Ads</div>
+              <p class="service-row-desc">Short, attention-grabbing video ads designed for viral reach and strong brand
+                awareness among younger audiences.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">04</div>
+            <div>
+              <div class="service-row-title">LinkedIn Ads</div>
+              <p class="service-row-desc">Targeting professionals and decision-makers with precision-based campaigns for
+                high-quality B2B leads.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">05</div>
+            <div>
+              <div class="service-row-title">YouTube Ads</div>
+              <p class="service-row-desc">Using engaging video advertising to tell your brand story and build trust
+                through visual impact.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">06</div>
+            <div>
+              <div class="service-row-title">WhatsApp Ads</div>
+              <p class="service-row-desc">Driving instant customer conversations by connecting ads directly to WhatsApp
+                for faster engagement.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">07</div>
+            <div>
+              <div class="service-row-title">Snapchat Ads</div>
+              <p class="service-row-desc">Reaching Gen Z and mobile-first users with immersive vertical ads that deliver
+                fast, creative experiences.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">08</div>
+            <div>
+              <div class="service-row-title">Pinterest Ads</div>
+              <p class="service-row-desc">Promoting visually appealing content that inspires users and drives traffic
+                for lifestyle and fashion discovery.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">09</div>
+            <div>
+              <div class="service-row-title">Retargeting / Remarketing Ads</div>
+              <p class="service-row-desc">Re-engaging potential customers who previously interacted with your brand to
+                increase conversions.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">10</div>
+            <div>
+              <div class="service-row-title">Programmatic Ads</div>
+              <p class="service-row-desc">Automating ad placements across multiple platforms in real-time with maximum
+                efficiency.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5: Content & Creative -->
+        <div id="p5" class="services-panel reveal" role="tabpanel">
+          <div class="service-row">
+            <div class="service-row-num">01</div>
+            <div>
+              <div class="service-row-title">Copywriting & Ad Copy</div>
+              <p class="service-row-desc">Persuasive brand messages and hooks designed to grab attention and drive
+                clicks, leads, and sales.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">02</div>
+            <div>
+              <div class="service-row-title">Ad Creatives Design</div>
+              <p class="service-row-desc">High-performing static and dynamic ad creatives for Google, Meta, and TikTok
+                that maximize conversions.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">03</div>
+            <div>
+              <div class="service-row-title">Graphic Design</div>
+              <p class="service-row-desc">Scroll-stopping visuals including social media posts, banners, and marketing
+                assets that strengthen identity.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">04</div>
+            <div>
+              <div class="service-row-title">Video Production & Editing</div>
+              <p class="service-row-desc">Producing engaging short-form and long-form videos such as Reels, TikToks, and
+                brand stories.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">05</div>
+            <div>
+              <div class="service-row-title">Content Writing</div>
+              <p class="service-row-desc">Writing SEO-optimized blogs, website pages, and brand content that improves
+                visibility and builds authority.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">06</div>
+            <div>
+              <div class="service-row-title">Social Media Content Creation</div>
+              <p class="service-row-desc">Developing platform-specific content including captions, posts, carousels, and
+                campaign ideas.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">07</div>
+            <div>
+              <div class="service-row-title">Motion Graphics & Animation</div>
+              <p class="service-row-desc">Creating animated visuals, explainer videos, and motion-based content that
+                enhances storytelling.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">08</div>
+            <div>
+              <div class="service-row-title">Creative Campaign Development</div>
+              <p class="service-row-desc">Planning and executing full creative concepts that align visuals, copy, and
+                strategy for maximum impact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS (Same as homepage) -->
+    <section style="background:#0D0D0D;">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:64px;">
+          <p class="section-label reveal" style="justify-content:center; font-size: 20px; letter-spacing: 8px;">How We
+            Work</p>
+          <h2 class="section-title reveal">Our 5-Step Process to <span>Build Dominant Brands</span></h2>
+        </div>
+        <div class="process-steps-grid">
+          <div class="card reveal"
+            style="text-align:center; padding: 32px 24px; border: 1px solid rgba(201, 168, 76, 0.3); background: rgba(255,255,255,0.02); border-radius: 8px;">
+            <div
+              style="font-family:var(--font-heading);font-size:42px;color:var(--color-gold);font-weight:900;margin-bottom:12px;">
+              01</div>
+            <h3 style="font-family:var(--font-heading);font-size:18px;color:var(--color-gold);margin-bottom:12px;">
+              Discovery Call</h3>
+            <p style="font-size:14px; color:var(--color-ivory); opacity: 0.8; line-height: 1.6;">Deep understanding of
+              your brand and goals.</p>
+          </div>
+          <div class="card reveal reveal-delay-1"
+            style="text-align:center; padding: 32px 24px; border: 1px solid rgba(201, 168, 76, 0.3); background: rgba(255,255,255,0.02); border-radius: 8px;">
+            <div
+              style="font-family:var(--font-heading);font-size:42px;color:var(--color-gold);font-weight:900;margin-bottom:12px;">
+              02</div>
+            <h3 style="font-family:var(--font-heading);font-size:18px;color:var(--color-gold);margin-bottom:12px;">
+              Research & Strategy</h3>
+            <p style="font-size:14px; color:var(--color-ivory); opacity: 0.8; line-height: 1.6;">Market research and
+              competitor analysis.</p>
+          </div>
+          <div class="card reveal reveal-delay-2"
+            style="text-align:center; padding: 32px 24px; border: 1px solid rgba(201, 168, 76, 0.3); background: rgba(255,255,255,0.02); border-radius: 8px;">
+            <div
+              style="font-family:var(--font-heading);font-size:42px;color:var(--color-gold);font-weight:900;margin-bottom:12px;">
+              03</div>
+            <h3 style="font-family:var(--font-heading);font-size:18px;color:var(--color-gold);margin-bottom:12px;">
+              Custom Proposal</h3>
+            <p style="font-size:14px; color:var(--color-ivory); opacity: 0.8; line-height: 1.6;">Transparent proposal
+              with clear deliverables.</p>
+          </div>
+          <div class="card reveal reveal-delay-3"
+            style="text-align:center; padding: 32px 24px; border: 1px solid rgba(201, 168, 76, 0.3); background: rgba(255,255,255,0.02); border-radius: 8px;">
+            <div
+              style="font-family:var(--font-heading);font-size:42px;color:var(--color-gold);font-weight:900;margin-bottom:12px;">
+              04</div>
+            <h3 style="font-family:var(--font-heading);font-size:18px;color:var(--color-gold);margin-bottom:12px;">
+              Execution</h3>
+            <p style="font-size:14px; color:var(--color-ivory); opacity: 0.8; line-height: 1.6;">Full ownership of
+              building and launching.</p>
+          </div>
+          <div class="card reveal reveal-delay-4"
+            style="text-align:center; padding: 32px 24px; border: 1px solid rgba(201, 168, 76, 0.3); background: rgba(255,255,255,0.02); border-radius: 8px;">
+            <div
+              style="font-family:var(--font-heading);font-size:42px;color:var(--color-gold);font-weight:900;margin-bottom:12px;">
+              05</div>
+            <h3 style="font-family:var(--font-heading);font-size:18px;color:var(--color-gold);margin-bottom:12px;">
+              Growth & Optimization</h3>
+            <p style="font-size:14px; color:var(--color-ivory); opacity: 0.8; line-height: 1.6;">Continuous tracking and
+              compounding results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ SECTION: CTA ═══════ -->
+    <div class="cta-section stripe-bg">
+      <div class="cta-content reveal">
+        <h2>Not Sure Which Service <span style="color:var(--color-gold);">You Need?</span></h2>
+        <p class="cta-creative-desc" style="color: var(--color-white); margin-bottom: 40px;">
+          Book a free 30-minute strategy call and our experts will recommend the perfect solution for your brand.
+        </p>
+        <a href="contact.html" class="btn-majestic-primary">Get Free Consultation →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="footer" role="contentinfo">
+    <div class="footer-cta-area">
+      <div class="container">
+        <h2 class="footer-cta-title">Join Our <span class="footer-cta-accent">Circle</span></h2>
+        <p class="footer-cta-text">Get exclusive branding strategies, growth hacks, and agency insights delivered
+          straight to your inbox.</p>
+        <form class="footer-subscribe-form" id="newsletter-form" novalidate><input type="email"
+            class="footer-subscribe-input" placeholder="Enter your email address" required
+            aria-label="Email address"><button type="submit" class="footer-subscribe-btn">Subscribe</button></form>
+        <div class="footer-subscribe-success" role="alert">✓ You're in! Welcome to the Brandozer community.</div>
+      </div>
+    </div>
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-col footer-col-brand">
+            <img src="assets/images/Brandozer_Logo.png" alt="Brandozer Logo" class="footer-brand-logo">
+            <p class="footer-brand-mission">We Build Brands &amp; Elevate Them to Growth</p>
+            <p class="footer-brand-about">A full-service branding and digital marketing agency helping startups,
+              personal brands, and growing businesses build dominant brands that command attention and drive revenue
+              worldwide.</p>
+            <div class="footer-social-icons">
+              <a href="https://www.linkedin.com/company/brandozer" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/share/18oEhMB7jC/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/zaheemqureshie" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://wa.me/923288672756" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="footer-col footer-col-links">
+            <h3 class="footer-col-title">Quick Links</h3>
+            <ul class="footer-link-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-col-contact">
+            <h3 class="footer-col-title">Get in Touch</h3>
+            <div class="footer-contact-block">
+              <div class="footer-contact-row"><span class="footer-contact-ico"><i
+                    class="far fa-envelope"></i></span><span>brandozer.official@gmail.com</span></div>
+              <div class="footer-contact-row"><span class="footer-contact-ico"><i
+                    class="fab fa-whatsapp"></i></span><span>+923288672756</span></div>
+              <div class="footer-contact-row"><span class="footer-contact-ico"><i
+                    class="far fa-clock"></i></span><span>We respond within 24 hours</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923288672756?text=Hi%20Brandozer%2C%20I%27d%20like%20to%20start%20a%20project"
+    id="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+    <span class="wa-tooltip">Chat with us on WhatsApp</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/components.js"></script>
+</body>
+
+</html>

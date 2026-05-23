@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Contact Brandozer — Book your free strategy call, email us, or WhatsApp us. We respond within 24 hours.">
+  <title>Contact — Brandozer | Get in Touch</title>
+  <link rel="canonical" href="contact.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/animations.css?v=2">
+  <link rel="stylesheet" href="css/responsive.css?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ── CUSTOM FORM AESTHETICS ── */
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(245, 240, 232, 0.35) !important;
+      font-style: italic;
+    }
+
+    .form-select {
+      background-color: rgba(201, 168, 76, 0.1) !important;
+      border: 1px solid rgba(201, 168, 76, 0.3) !important;
+      color: var(--color-ivory) !important;
+      font-weight: 500;
+    }
+
+    /* Highlight the selected service with a golden background */
+    .form-select:focus {
+      background-color: var(--color-gold) !important;
+      color: var(--color-black) !important;
+      box-shadow: 0 0 25px rgba(201, 168, 76, 0.3) !important;
+    }
+
+    /* Style the dropdown options */
+    .form-select option {
+      background: #111 !important;
+      color: var(--color-ivory) !important;
+      padding: 12px;
+    }
+
+    /* Golden Calendar Icon */
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      filter: invert(72%) sepia(54%) saturate(350%) hue-rotate(1deg) brightness(92%) contrast(88%);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+      transform: scale(1.2);
+    }
+
+    /* Start Your Project Label */
+    .reveal-left .section-label {
+      font-size: 16px !important;
+      letter-spacing: 6px !important;
+      margin-bottom: 24px !important;
+      color: var(--color-gold) !important;
+    }
+
+    /* Description Text to White/Ivory */
+    .contact-desc {
+      color: var(--color-white) !important;
+      opacity: 1 !important;
+    }
+
+    /* Form Labels to White */
+    .form-label {
+      color: var(--color-white) !important;
+      font-weight: 600 !important;
+      letter-spacing: 1.5px !important;
+      font-size: 13px !important;
+    }
+
+    /* White Calendar Icon */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+      transform: scale(1.2);
+    }
+
+    /* Refined Dropdown Styling */
+    .form-select {
+      background-color: rgba(255, 255, 255, 0.03) !important;
+      border: 1px solid rgba(201, 168, 76, 0.3) !important;
+      color: var(--color-white) !important;
+      font-weight: 500;
+    }
+
+    /* Hover effect on the select itself */
+    .form-select:hover {
+      border-color: var(--color-gold) !important;
+    }
+
+    /* Highlight the selected service with a golden background */
+    .form-select:focus {
+      background-color: var(--color-gold) !important;
+      color: var(--color-black) !important;
+      box-shadow: 0 0 25px rgba(201, 168, 76, 0.3) !important;
+    }
+
+    /* Style the dropdown options */
+    .form-select option {
+      background: #111 !important;
+      color: var(--color-white) !important;
+    }
+
+    /* Note: Custom option hover is limited in standard browsers, 
+       but we set the focus state of the select to Gold for a premium feel. */
+    .form-select option:hover {
+      background-color: var(--color-gold) !important;
+      color: var(--color-black) !important;
+    }
+
+    /* ── CUSTOM DROPDOWN (Replaces Blue Hover) ── */
+    .custom-select {
+      position: relative;
+      width: 100%;
+      user-select: none;
+    }
+
+    .custom-select-trigger {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 16px 20px;
+      color: var(--color-white);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 4px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .custom-select-trigger:hover {
+      border-color: var(--color-gold);
+      background: rgba(201, 168, 76, 0.05);
+    }
+
+    .custom-select.open .custom-select-trigger {
+      border-color: var(--color-gold);
+      background: var(--color-black);
+      box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
+    }
+
+    .custom-select-trigger::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid var(--color-gold);
+      transition: transform 0.3s ease;
+    }
+
+    .custom-select.open .custom-select-trigger::after {
+      transform: rotate(180deg);
+    }
+
+    .custom-options {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #0F0F0F;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 8px;
+      z-index: 1000;
+      display: none;
+      max-height: 350px;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      backdrop-filter: blur(20px);
+    }
+
+    .custom-select.open .custom-options {
+      display: block;
+      animation: selectFadeIn 0.3s ease forwards;
+    }
+
+    @keyframes selectFadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .custom-group-label {
+      padding: 12px 20px 6px;
+      font-size: 11px;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+      opacity: 0.8;
+      background: rgba(201, 168, 76, 0.03);
+    }
+
+    .custom-option {
+      padding: 12px 20px;
+      cursor: pointer;
+      color: var(--color-white);
+      font-size: 14px;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    /* THE GOLDEN HOVER (Replaces Blue) */
+    .custom-option:hover {
+      background: var(--color-gold);
+      color: var(--color-black);
+      padding-left: 25px;
+      border-left-color: var(--color-ivory);
+      font-weight: 600;
+    }
+
+    .custom-option.selected {
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--color-gold);
+      border-left-color: var(--color-gold);
+    }
+
+    /* Custom Scrollbar for Dropdown */
+    .custom-options::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-options::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+    .custom-options::-webkit-scrollbar-thumb {
+      background: var(--color-gold);
+      border-radius: 10px;
+    }
+
+    /* ── FAQ STYLING ── */
+    #faq-section .section-label {
+      font-size: 18px !important;
+      letter-spacing: 8px !important;
+      color: var(--color-gold) !important;
+      font-weight: 800 !important;
+      margin-bottom: 24px !important;
+    }
+
+    #faq-section .faq-question {
+      color: var(--color-white) !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      transition: color 0.3s ease !important;
+    }
+
+    #faq-section .faq-item:hover .faq-question {
+      color: var(--color-gold) !important;
+    }
+
+    #faq-section .faq-answer-inner {
+      color: var(--color-white) !important;
+      font-size: 16px !important;
+      opacity: 0.85 !important;
+      line-height: 1.8 !important;
+    }
+
+    /* Premium Input Hover Effect */
+    .form-input, .form-textarea, .form-select {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .form-input:hover, .form-textarea:hover {
+      border-color: rgba(201, 168, 76, 0.4);
+      background: rgba(201, 168, 76, 0.02);
+    }
+
+    /* Custom Select Validation Error Styling */
+    .custom-select.error .custom-select-trigger {
+      border-color: #e74c3c !important;
+      background: rgba(231, 76, 60, 0.05) !important;
+      box-shadow: 0 0 10px rgba(231, 76, 60, 0.1) !important;
+    }
+
+    .custom-select.error .form-error {
+      display: block !important;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main"
+    style="position:absolute;left:-9999px;top:4px;z-index:99999;background:var(--color-gold);color:var(--color-black);padding:8px 16px;border-radius:4px;font-family:var(--font-body);">Skip
+    to content</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="loading-screen" aria-hidden="true">
+    <span class="loader-logo">BRANDOZER</span>
+    <p class="loader-tagline">We Build Brands &amp; Elevate Them to Growth</p>
+  </div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-outline" aria-hidden="true"></div>
+
+      <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="index.html" class="nav-logo-link" aria-label="Brandozer Home">
+          <img src="assets/images/Brandozer_Logo.png" alt="Brandozer Logo" class="nav-logo-img">
+          <span class="nav-brand-text">BRANDOZER</span>
+        </a>
+      </div>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html" >About</a></li>
+        <li><a href="services.html" >Services</a></li>
+        <li><a href="#" >Portfolio</a></li>
+        <li><a href="blog.html" >Blog</a></li>
+        <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="#">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  
+  
+
+  <main id="main">
+
+    <!-- ═══════ SECTION 1: HERO ═══════ -->
+    <section class="hero-section modern-hero" id="contact-hero">
+
+      <div class="hero-watermark">CONTACT</div>
+
+      <div class="container">
+        <div class="hero-modern-container">
+          <div class="hero-tagline-wrap reveal">
+            <h1 class="hero-bold-tagline">
+              We Are Just One<br>
+              <span style="color:var(--color-ivory);">Message Away</span>
+            </h1>
+            <div class="hero-btns-modern">
+              <a href="#contact-form" class="btn-majestic-primary">Start the Conversation</a>
+            </div>
+          </div>
+
+          <div class="hero-character-wrap reveal">
+            <div class="hero-character-glow"></div>
+            <img src="assets/images/Contact_Hero.png" alt="Contact Brandozer" class="hero-character-img">
+          </div>
+
+          <div class="hero-desc-box reveal">
+            <div class="desc-content">
+              <p>Ready to build your brand? Reach out and let's start the conversation. Our team typically responds within 24 hours to help you build, elevate, and drive measurable growth for your business.</p>
+              <div class="hero-social-mini">
+                <a href="https://www.facebook.com/share/18oEhMB7jC/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/brandozer" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/zaheemqureshie" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/923288672756" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════ CONTACT LAYOUT ═══════ -->
+    <section style="background:var(--color-black);padding: 100px 0;">
+      <div class="container contact-grid">
+
+        <!-- ── CONTACT FORM ── -->
+        <div class="reveal-left">
+          <div style="margin-bottom:40px;">
+            <p class="section-label" style="font-weight: 700;">Start Your Project</p>
+            <h2
+              style="font-family:var(--font-heading);font-size:clamp(32px,4vw,48px);color:var(--color-ivory);margin-bottom:15px;line-height:1.2;">
+              Book a <span style="color:var(--color-gold);">Free Strategy Call</span>
+            </h2>
+            <p class="contact-desc" style="font-size:17px; max-width:600px; line-height: 1.6;">Fill out the form below and our team will get back to you within 24 hours to discuss how we can elevate your brand.</p>
+          </div>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="full-name">Full Name *</label>
+                <input class="form-input" type="text" id="full-name" name="full-name" required
+                  aria-required="true">
+                <span class="form-error">Please enter your full name</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input class="form-input" type="email" id="email" name="email" required
+                  aria-required="true">
+                <span class="form-error">Please enter a valid email</span>
+              </div>
+            </div>
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="phone">WhatsApp / Phone</label>
+                <input class="form-input" type="tel" id="phone" name="phone">
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company">Company / Brand Name</label>
+                <input class="form-input" type="text" id="company" name="company">
+                <span class="form-error"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Service Required *</label>
+              <div class="custom-select" id="service-select">
+                <div class="custom-select-trigger">Select a service…</div>
+                <div class="custom-options">
+                  <div class="custom-group-label">Brand Building</div>
+                  <div class="custom-option" data-value="brand-strategy">Brand Strategy & Positioning</div>
+                  <div class="custom-option" data-value="brand-naming">Brand Naming & Tagline Development</div>
+                  <div class="custom-option" data-value="logo-design">Logo Design & Visual Identity</div>
+                  <div class="custom-option" data-value="brand-guidelines">Brand Guidelines Document</div>
+                  <div class="custom-option" data-value="brand-collateral">Brand Collateral Design</div>
+                  <div class="custom-option" data-value="brand-comm">Brand Communication Assets</div>
+                  
+                  <div class="custom-group-label">Social Media Management</div>
+                  <div class="custom-option" data-value="social-optimization">Profile Optimization & Branding</div>
+                  <div class="custom-option" data-value="social-strategy">Social Media Strategy</div>
+                  <div class="custom-option" data-value="social-calendar">Content Calendar & Scheduling</div>
+                  <div class="custom-option" data-value="community-management">Community Management</div>
+                  <div class="custom-option" data-value="organic-growth">Organic Growth Optimization</div>
+                  <div class="custom-option" data-value="social-reporting">Social Media Reporting</div>
+                  
+                  <div class="custom-group-label">Website Design & Development</div>
+                  <div class="custom-option" data-value="web-strategy">Website Strategy & Wireframing</div>
+                  <div class="custom-option" data-value="ui-ux-design">Custom UI/UX Website Design</div>
+                  <div class="custom-option" data-value="frontend-dev">Front-End Development</div>
+                  <div class="custom-option" data-value="fullstack-dev">Full-Stack Web Development</div>
+                  <div class="custom-option" data-value="cms-ecommerce">CMS & E-Commerce Development</div>
+                  <div class="custom-option" data-value="web-automation">Web Automation & System Integration</div>
+                  <div class="custom-option" data-value="landing-pages">Landing Pages & Funnels</div>
+                  <div class="custom-option" data-value="seo">Search Engine Optimization (SEO)</div>
+                  
+                  <div class="custom-group-label">Advertisements</div>
+                  <div class="custom-option" data-value="google-ads">Google Ads</div>
+                  <div class="custom-option" data-value="meta-ads">Meta Ads (Facebook & Instagram)</div>
+                  <div class="custom-option" data-value="tiktok-ads">TikTok Ads</div>
+                  <div class="custom-option" data-value="linkedin-ads">LinkedIn Ads</div>
+                  <div class="custom-option" data-value="youtube-ads">YouTube Ads</div>
+                  <div class="custom-option" data-value="whatsapp-ads">WhatsApp Ads</div>
+                  <div class="custom-option" data-value="snapchat-ads">Snapchat Ads</div>
+                  <div class="custom-option" data-value="pinterest-ads">Pinterest Ads</div>
+                  <div class="custom-option" data-value="retargeting-ads">Retargeting / Remarketing Ads</div>
+                  <div class="custom-option" data-value="programmatic-ads">Programmatic Ads</div>
+                  
+                  <div class="custom-group-label">Content & Creative</div>
+                  <div class="custom-option" data-value="copywriting">Copywriting & Ad Copy</div>
+                  <div class="custom-option" data-value="ad-creatives">Ad Creatives Design</div>
+                  <div class="custom-option" data-value="graphic-design">Graphic Design</div>
+                  <div class="custom-option" data-value="video-production">Video Production & Editing</div>
+                  <div class="custom-option" data-value="content-writing">Content Writing</div>
+                  <div class="custom-option" data-value="social-content">Social Media Content Creation</div>
+                  <div class="custom-option" data-value="motion-graphics">Motion Graphics & Animation</div>
+                  <div class="custom-option" data-value="creative-campaign">Creative Campaign Development</div>
+                  <div class="custom-option" data-value="other">Other / Custom Requirement</div>
+                </div>
+                <input type="hidden" id="service" name="service" required>
+                <span class="form-error">Please select a service</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">How Did You Hear About Us?</label>
+              <div class="custom-select" id="source-select">
+                <div class="custom-select-trigger">Select an option…</div>
+                <div class="custom-options">
+                  <div class="custom-option" data-value="google">Google Search</div>
+                  <div class="custom-option" data-value="social-media">Social Media</div>
+                  <div class="custom-option" data-value="referral">Referral / Word of Mouth</div>
+                  <div class="custom-option" data-value="instagram">Instagram</div>
+                  <div class="custom-option" data-value="linkedin">LinkedIn</div>
+                  <div class="custom-option" data-value="tiktok">TikTok</div>
+                  <div class="custom-option" data-value="youtube">YouTube</div>
+                  <div class="custom-option" data-value="other">Other</div>
+                </div>
+                <input type="hidden" id="source" name="source">
+                <span class="form-error"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Project Brief / Message *</label>
+              <textarea class="form-textarea" id="message" name="message" required
+                aria-required="true"></textarea>
+              <span class="form-error">Please tell us about your project</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="call-time">Preferred Date for Call</label>
+              <input class="form-input" type="date" id="call-time" name="call-time">
+              <span class="form-error"></span>
+            </div>
+
+            <div style="margin-top:40px; display:flex; justify-content:center;">
+              <button type="submit" class="btn-majestic-primary btn-shimmer"
+                style="width:100%; justify-content:center; font-size:18px; padding:20px 32px; height: auto;">
+                Book My Free Strategy Call →
+              </button>
+            </div>
+
+            <div id="form-success" class="form-success" role="alert">
+              ✓ Thank you! We've received your message and will get back to you within 24 hours. Check your email for a
+              confirmation.
+            </div>
+          </form>
+        </div>
+
+        <!-- ── CONTACT SIDEBAR ── -->
+        <div class="reveal-right" style="position:sticky;top:120px;">
+          <div class="mobile-contact-sidebar" style="background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(201, 168, 76, 0.02)); border: 1px solid rgba(201, 168, 76, 0.3); border-radius: 32px; padding: 56px 48px; backdrop-filter: blur(15px); box-shadow: 0 30px 60px rgba(0,0,0,0.5); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10%; right: -10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(201, 168, 76, 0.1) 0%, transparent 70%); pointer-events: none;"></div>
+            
+            <p class="section-label" style="margin-bottom:40px; color: var(--color-white); font-size: 18px; letter-spacing: 6px; font-weight: 800;">Connect with us</p>
+
+            <div style="margin-bottom:48px; display: flex; flex-direction: column; gap: 36px;">
+              <!-- Email -->
+              <div class="footer-contact-item" style="display:flex; align-items:center; gap:24px;">
+                <div style="width:52px; height:52px; background:rgba(201, 168, 76, 0.15); border:1px solid rgba(201, 168, 76, 0.4); border-radius:16px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:22px; transition: all 0.3s ease;">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--color-white); margin-bottom:6px; font-family:var(--font-body); font-weight: 700;">Email Us</div>
+                  <a href="mailto:brandozer.official@gmail.com" style="color:var(--color-gold); font-size:16px; text-decoration:none; font-weight: 500; transition:var(--transition);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">brandozer.official@gmail.com</a>
+                </div>
+              </div>
+
+              <!-- WhatsApp -->
+              <div class="footer-contact-item" style="display:flex; align-items:center; gap:24px;">
+                <div style="width:52px; height:52px; background:rgba(201, 168, 76, 0.15); border:1px solid rgba(201, 168, 76, 0.4); border-radius:16px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:22px; transition: all 0.3s ease;">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div>
+                  <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--color-white); margin-bottom:6px; font-family:var(--font-body); font-weight: 700;">WhatsApp</div>
+                  <a href="https://wa.me/923288672756" style="color:var(--color-gold); font-size:16px; text-decoration:none; font-weight: 500; transition:var(--transition);" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">+923288672756</a>
+                </div>
+              </div>
+
+              <!-- Response Time -->
+              <div class="footer-contact-item" style="display:flex; align-items:center; gap:24px;">
+                <div style="width:52px; height:52px; background:rgba(201, 168, 76, 0.15); border:1px solid rgba(201, 168, 76, 0.4); border-radius:16px; display:flex; align-items:center; justify-content:center; color:var(--color-gold); font-size:22px; transition: all 0.3s ease;">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--color-white); margin-bottom:6px; font-family:var(--font-body); font-weight: 700;">Response Time</div>
+                  <div style="color:var(--color-gold); font-size:16px; font-weight: 500;">Within 24 Hours</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="section-label" style="margin-bottom:24px; color: var(--color-white); font-size: 14px; letter-spacing: 3px;">Follow our journey</p>
+            <div class="hero-social-mini" style="margin:0; display: flex; gap: 16px;">
+              <a href="https://www.linkedin.com/company/brandozer" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-ivory); transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-gold)'; this.style.color='var(--color-black)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--color-ivory)';"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/share/18oEhMB7jC/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-ivory); transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-gold)'; this.style.color='var(--color-black)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--color-ivory)';"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/zaheemqureshie" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-ivory); transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-gold)'; this.style.color='var(--color-black)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--color-ivory)';"><i class="fab fa-instagram"></i></a>
+              <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-ivory); transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-gold)'; this.style.color='var(--color-black)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--color-ivory)';"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://wa.me/923288672756" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-ivory); transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-gold)'; this.style.color='var(--color-black)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--color-ivory)';"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════ FAQ ═══════ -->
+    <section id="faq-section" style="background:#0D0D0D;">
+      <div class="container" style="max-width:800px;">
+        <div style="text-align:center;margin-bottom:56px;">
+          <p class="section-label reveal" style="justify-content:center;">FAQ</p>
+          <h2 class="section-title reveal">Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div class="reveal">
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false">
+              How long does it take to build a brand identity?
+              <div class="faq-icon" aria-hidden="true">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">A complete brand identity typically takes 7–14 business days depending on
+                scope and revision rounds. Rush projects can be accommodated at an additional fee. We'll give you a
+                precise timeline in your custom proposal.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false">
+              Do you work with international clients?
+              <div class="faq-icon" aria-hidden="true">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Absolutely. We work with brands across 50+ countries and all services are
+                available to international clients. We work across time zones and use collaborative tools to ensure
+                seamless communication regardless of your location.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false">
+              What is the minimum budget to start?
+              <div class="faq-icon" aria-hidden="true">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">We have packages for every stage of business — starting from $499/month for
+                our Starter Brand package. Book a free call and we'll recommend the best option for your budget and
+                goals. We never oversell — we only recommend what you need.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false">
+              Do you offer one-time projects or ongoing retainers?
+              <div class="faq-icon" aria-hidden="true">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Both. We offer one-time brand projects (like a logo or website) and ongoing
+                monthly marketing retainers. We also offer hybrid arrangements — for example, a one-time brand identity
+                package with an optional ongoing social media retainer added later.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false">
+              How do I get started with Brandozer?
+              <div class="faq-icon" aria-hidden="true">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Simply fill out the contact form above or WhatsApp us directly. We'll
+                schedule a free 30-minute strategy call where our experts will listen to your goals and walk you through
+                exactly how we can help. No commitment required.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false">
+              What makes Brandozer different from other marketing agencies?
+              <div class="faq-icon" aria-hidden="true">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Three things: 1) We're a full-service agency — everything under one roof
+                with one unified brand strategy. 2) We're results-obsessed — every decision is tied to measurable
+                outcomes. 3) We treat every client like our only client — dedicated teams, transparent reporting, and
+                genuine care about your success.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" role="contentinfo">
+    <div class="footer-cta-area">
+      <div class="container">
+        <h2 class="footer-cta-title">Join Our <span class="footer-cta-accent">Circle</span></h2>
+        <p class="footer-cta-text">Get exclusive branding strategies, growth hacks, and agency insights delivered
+          straight to your inbox.</p>
+        <form class="footer-subscribe-form" id="newsletter-form" novalidate><input type="email"
+            class="footer-subscribe-input" placeholder="Enter your email address" required
+            aria-label="Email address"><button type="submit" class="footer-subscribe-btn">Subscribe</button></form>
+        <div class="footer-subscribe-success" role="alert">✓ You're in! Welcome to the Brandozer community.</div>
+      </div>
+    </div>
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-col footer-col-brand"><img src="assets/images/Brandozer_Logo.png" alt="Brandozer Logo"
+              class="footer-brand-logo">
+            <p class="footer-brand-mission">We Build Brands &amp; Elevate Them to Growth</p>
+            <p class="footer-brand-about">A full-service branding and digital marketing agency helping startups,
+              personal brands, and growing businesses build dominant brands worldwide.</p>
+            <div class="footer-social-icons">
+              <a href="https://www.linkedin.com/company/brandozer" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/share/18oEhMB7jC/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/zaheemqureshie" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://wa.me/923288672756" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="footer-col footer-col-links">
+            <h3 class="footer-col-title">Quick Links</h3>
+            <ul class="footer-link-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-col-contact">
+            <h3 class="footer-col-title">Get in Touch</h3>
+            <div class="footer-contact-block">
+              <div class="footer-contact-row"><span class="footer-contact-ico"><i
+                    class="far fa-envelope"></i></span><span>brandozer.official@gmail.com</span></div>
+              <div class="footer-contact-row"><span class="footer-contact-ico"><i
+                    class="fab fa-whatsapp"></i></span><span>+923288672756</span></div>
+              <div class="footer-contact-row"><span class="footer-contact-ico"><i
+                    class="far fa-clock"></i></span><span>We respond within 24 hours</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/923288672756?text=Hi%20Brandozer%2C%20I%27d%20like%20to%20start%20a%20project"
+    id="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+    <span class="wa-tooltip">Chat with us on WhatsApp</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/components.js"></script>
+  
+  <script>
+    /* ── CUSTOM DROPDOWN LOGIC ── */
+    document.querySelectorAll('.custom-select').forEach(select => {
+      const trigger = select.querySelector('.custom-select-trigger');
+      const options = select.querySelector('.custom-options');
+      const hiddenInput = select.querySelector('input[type="hidden"]');
+      const optionItems = select.querySelectorAll('.custom-option');
+
+      trigger.addEventListener('click', (e) => {
+        // Close other dropdowns
+        document.querySelectorAll('.custom-select').forEach(s => {
+          if (s !== select) s.classList.remove('open');
+        });
+        select.classList.toggle('open');
+        e.stopPropagation();
+      });
+
+      optionItems.forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          trigger.textContent = opt.textContent;
+          hiddenInput.value = opt.getAttribute('data-value');
+          
+          optionItems.forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          
+          select.classList.remove('open');
+          e.stopPropagation();
+          
+          // Trigger validation check if manual
+          if(hiddenInput.hasAttribute('required') && hiddenInput.value) {
+            select.querySelector('.form-error').style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.custom-select').forEach(s => s.classList.remove('open'));
+    });
+  </script>
+</body>
+
+</html>
