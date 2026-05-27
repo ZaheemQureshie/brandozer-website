@@ -280,6 +280,11 @@
       "social-content": "Social Media Content Creation",
       "motion-graphics": "Motion Graphics & Animation",
       "creative-campaign": "Creative Campaign Development",
+      "web-pentest": "Web Application Penetration Testing",
+      "android-pentest": "Android Application Penetration Testing",
+      "ios-pentest": "iOS Application Penetration Testing",
+      "network-pentest": "Network Penetration Testing",
+      "brand-protection": "Digital Brand Protection",
       "other": "Other / Custom Requirement"
     };
 
