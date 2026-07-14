@@ -288,6 +288,493 @@
     .custom-select.error .form-error {
       display: block !important;
     }
+
+    /* ── PHONE FIELD WITH COUNTRY CODE ── */
+    .phone-field-wrap {
+      display: flex;
+      gap: 0;
+      position: relative;
+    }
+
+    .country-code-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .country-code-btn {
+      background: #111111;
+      border: 1px solid #2A2A2A;
+      border-right: none;
+      padding: 0 14px;
+      height: 100%;
+      min-height: 54px;
+      color: var(--color-white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 4px 0 0 4px;
+      font-size: 14px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      min-width: 110px;
+    }
+
+    .country-code-btn:hover {
+      background: #181818;
+      border-color: #333333;
+    }
+
+    .country-code-btn .cc-flag {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .country-code-btn .cc-code {
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    .country-code-btn .cc-arrow {
+      margin-left: auto;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--color-gold);
+      transition: transform 0.3s ease;
+    }
+
+    .country-code-wrap.open .cc-arrow {
+      transform: rotate(180deg);
+    }
+
+    .cc-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      width: 280px;
+      background: #0F0F0F;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 8px;
+      z-index: 9999;
+      display: none;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+    }
+
+    .country-code-wrap.open .cc-dropdown {
+      display: block;
+      animation: selectFadeIn 0.25s ease forwards;
+    }
+
+    .cc-search {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .cc-search input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 4px;
+      padding: 8px 12px;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 13px;
+      outline: none;
+    }
+
+    .cc-search input:focus {
+      border-color: var(--color-gold);
+    }
+
+    .cc-list {
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    .cc-list::-webkit-scrollbar { width: 5px; }
+    .cc-list::-webkit-scrollbar-track { background: #0A0A0A; }
+    .cc-list::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 10px; }
+
+    .cc-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      cursor: pointer;
+      color: var(--color-white);
+      font-size: 13px;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .cc-item:hover {
+      background: var(--color-gold);
+      color: var(--color-black);
+      font-weight: 600;
+      border-left-color: var(--color-ivory);
+    }
+
+    .cc-item .cc-item-flag { font-size: 18px; }
+    .cc-item .cc-item-name { flex: 1; }
+    .cc-item .cc-item-dial { color: var(--color-gold); font-weight: 700; font-size: 12px; }
+    .cc-item:hover .cc-item-dial { color: var(--color-black); }
+
+    .phone-number-input {
+      flex: 1;
+      border-radius: 0 4px 4px 0 !important;
+    }
+
+    /* ── CALENDLY MODAL ── */
+    #calendly-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    #calendly-overlay.active {
+      display: flex;
+      animation: calOverlayIn 0.35s ease forwards;
+    }
+
+    @keyframes calOverlayIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .calendly-modal-box {
+      background: linear-gradient(160deg, #131313, #0A0A0A);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 20px;
+      width: min(1020px, 98vw);
+      height: min(850px, 95vh);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 50px 100px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,168,76,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+      animation: calModalIn 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes calModalIn {
+      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .calendly-modal-header {
+      padding: 28px 36px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      background: linear-gradient(90deg, rgba(201,168,76,0.05), transparent);
+      flex-shrink: 0;
+    }
+
+    .calendly-modal-header-text h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      color: var(--color-ivory);
+      margin: 0 0 6px;
+    }
+
+    .calendly-modal-header-text p {
+      font-size: 14px;
+      color: rgba(245,240,232,0.6);
+      margin: 0;
+    }
+
+    .calendly-modal-header-text .cal-client-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    .calendly-close-btn {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--color-ivory);
+      font-size: 18px;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .calendly-close-btn:hover {
+      background: rgba(201,168,76,0.2);
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      transform: rotate(90deg);
+    }
+
+    .calendly-modal-body {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .calendly-modal-body iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+      display: block !important;
+    }
+
+    /* ── SUCCESS BOX OVERRIDE ── */
+    #form-success {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin-top: 36px !important;
+      box-shadow: none !important;
+    }
+
+    /* ── SUCCESS + WHATSAPP CARD ── */
+    .success-wa-card {
+      margin-top: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.25);
+      animation: cardFadeIn 0.5s ease forwards;
+      background: linear-gradient(180deg, #111111, #080808);
+      width: 116%;
+      margin-left: -8%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    @media (max-width: 800px) {
+      .success-wa-card {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-wa-card .card-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 28px;
+      background: linear-gradient(135deg, rgba(39,174,96,0.08), rgba(39,174,96,0.03));
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+
+    .success-wa-card .card-top .check-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(39,174,96,0.15);
+      border: 1px solid rgba(39,174,96,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #27AE60;
+      flex-shrink: 0;
+    }
+
+    .success-wa-card .card-top .card-text h4 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--color-ivory);
+      margin: 0 0 4px;
+    }
+
+    .success-wa-card .card-top .card-text p {
+      font-size: 14px;
+      color: rgba(245,240,232,0.6);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .success-wa-card .card-bottom {
+      display: none; /* Removing old single-action bottom */
+    }
+
+    /* ── SUCCESS ACTIONS GRID ── */
+    .success-actions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 24px 28px;
+      background: rgba(0,0,0,0.35);
+    }
+    
+    @media (max-width: 600px) {
+      .success-actions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .action-box {
+      border-radius: 12px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      transition: all 0.3s ease;
+    }
+
+    .action-box:hover {
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-3px);
+    }
+
+    .action-box.calendly-box {
+      border-color: rgba(201,168,76,0.3);
+      background: linear-gradient(145deg, rgba(201,168,76,0.06), transparent);
+    }
+    .action-box.calendly-box:hover {
+      border-color: var(--color-gold);
+      box-shadow: 0 10px 30px rgba(201,168,76,0.15);
+    }
+
+    .action-box.wa-box {
+      border-color: rgba(37,211,102,0.3);
+      background: linear-gradient(145deg, rgba(37,211,102,0.06), transparent);
+    }
+    .action-box.wa-box:hover {
+      border-color: #25D366;
+      box-shadow: 0 10px 30px rgba(37,211,102,0.15);
+    }
+
+    .action-box-icon {
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    .calendly-box .action-box-icon { color: var(--color-gold); }
+    .wa-box .action-box-icon { color: #25D366; }
+
+    .action-box h5 {
+      color: var(--color-ivory);
+      font-family: var(--font-heading);
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .action-box p {
+      color: rgba(245,240,232,0.65);
+      font-size: 13.5px;
+      margin: 0;
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    .cal-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--color-gold), #b38822);
+      color: var(--color-black) !important;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+    .cal-trigger-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+    }
+
+    .wa-send-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #25D366, #1da851);
+      color: #fff !important;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .wa-send-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+      background: linear-gradient(135deg, #2ee872, #25D366);
+    }
+
+    .calendly-modal-body .cal-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--color-gold);
+    }
+
+    .cal-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(201,168,76,0.2);
+      border-top-color: var(--color-gold);
+      border-radius: 50%;
+      animation: calSpin 0.9s linear infinite;
+    }
+
+    @keyframes calSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .cal-loading p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(245,240,232,0.6);
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 
@@ -411,8 +898,26 @@
 
             <div class="form-row-2col">
               <div class="form-group">
-                <label class="form-label" for="phone">WhatsApp / Phone</label>
-                <input class="form-input" type="tel" id="phone" name="phone">
+                <label class="form-label" for="phone-number">WhatsApp / Phone</label>
+                <div class="phone-field-wrap">
+                  <!-- Country Code Picker -->
+                  <div class="country-code-wrap" id="cc-wrap">
+                    <button type="button" class="country-code-btn" id="cc-btn" aria-label="Select country code" aria-expanded="false">
+                      <span class="cc-flag" id="cc-flag">🇵🇰</span>
+                      <span class="cc-code" id="cc-code">+92</span>
+                      <span class="cc-arrow"></span>
+                    </button>
+                    <div class="cc-dropdown" id="cc-dropdown" role="listbox" aria-label="Country codes">
+                      <div class="cc-search">
+                        <input type="text" id="cc-search-input" placeholder="Search country…" autocomplete="off">
+                      </div>
+                      <div class="cc-list" id="cc-list"></div>
+                    </div>
+                  </div>
+                  <!-- Phone Number -->
+                  <input class="form-input phone-number-input" type="tel" id="phone-number" name="phone-number" placeholder="" autocomplete="tel-national">
+                </div>
+                <input type="hidden" id="phone" name="phone">
                 <span class="form-error"></span>
               </div>
               <div class="form-group">
@@ -423,88 +928,83 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Service Required *</label>
+              <label class="form-label">What do you need help with? *</label>
               <div class="custom-select" id="service-select">
                 <div class="custom-select-trigger">Select a service…</div>
                 <div class="custom-options">
+
+                  <!-- ── Brand Building ── -->
                   <div class="custom-group-label">Brand Building</div>
-                  <div class="custom-option" data-value="brand-strategy">Brand Strategy & Positioning</div>
-                  <div class="custom-option" data-value="brand-naming">Brand Naming & Tagline Development</div>
-                  <div class="custom-option" data-value="logo-design">Logo Design & Visual Identity</div>
-                  <div class="custom-option" data-value="brand-guidelines">Brand Guidelines Document</div>
-                  <div class="custom-option" data-value="brand-collateral">Brand Collateral Design</div>
-                  <div class="custom-option" data-value="brand-comm">Brand Communication Assets</div>
-                  
+                  <div class="custom-option" data-value="brand-strategy">Brand Strategy</div>
+                  <div class="custom-option" data-value="logo-design">Logo Design</div>
+                  <div class="custom-option" data-value="color-palette">Color Palette</div>
+                  <div class="custom-option" data-value="typography-fonts">Typography / Fonts</div>
+                  <div class="custom-option" data-value="brand-messaging-copywriting">Brand Messaging &amp; Copywriting</div>
+                  <div class="custom-option" data-value="brand-technology-dev-automation">Brand Technology Design, Development &amp; Automation</div>
+                  <div class="custom-option" data-value="social-media-branding">Social Media Branding</div>
+                  <div class="custom-option" data-value="advertising-creative">Advertising Creative</div>
+                  <div class="custom-option" data-value="packaging-design">Packaging Design &amp; Product Presentation</div>
+                  <div class="custom-option" data-value="social-media-graphics-design">Social Media Graphics Design</div>
+                  <div class="custom-option" data-value="print-stationery-design">Print &amp; Stationery Design</div>
+
+                  <!-- ── Social Media Management ── -->
                   <div class="custom-group-label">Social Media Management</div>
-                  <div class="custom-option" data-value="social-optimization">Profile Optimization & Branding</div>
-                  <div class="custom-option" data-value="social-strategy">Social Media Strategy</div>
-                  <div class="custom-option" data-value="social-calendar">Content Calendar & Scheduling</div>
+                  <div class="custom-option" data-value="profile-optimization-branding">Profile Optimization &amp; Branding</div>
+                  <div class="custom-option" data-value="social-media-strategy">Social Media Strategy</div>
+                  <div class="custom-option" data-value="content-calendar-scheduling">Content Calendar &amp; Scheduling</div>
                   <div class="custom-option" data-value="community-management">Community Management</div>
-                  <div class="custom-option" data-value="organic-growth">Organic Growth Optimization</div>
-                  <div class="custom-option" data-value="social-reporting">Social Media Reporting</div>
-                  
-                  <div class="custom-group-label">Website Design & Development</div>
-                  <div class="custom-option" data-value="web-strategy">Website Strategy & Wireframing</div>
-                  <div class="custom-option" data-value="ui-ux-design">Custom UI/UX Website Design</div>
-                  <div class="custom-option" data-value="frontend-dev">Front-End Development</div>
-                  <div class="custom-option" data-value="fullstack-dev">Full-Stack Web Development</div>
-                  <div class="custom-option" data-value="cms-ecommerce">CMS & E-Commerce Development</div>
-                  <div class="custom-option" data-value="web-automation">Web Automation & System Integration</div>
-                  <div class="custom-option" data-value="landing-pages">Landing Pages & Funnels</div>
-                  <div class="custom-option" data-value="seo">Search Engine Optimization (SEO)</div>
-                  
+                  <div class="custom-option" data-value="organic-growth-optimization">Organic Growth Optimization</div>
+                  <div class="custom-option" data-value="social-media-reporting">Social Media Reporting</div>
+
+                  <!-- ── Technology Development & Automation Solutions ── -->
+                  <div class="custom-group-label">Technology Development &amp; Automation Solutions</div>
+                  <div class="custom-option" data-value="website-design-strategy">Website Design &amp; Strategy</div>
+                  <div class="custom-option" data-value="web-development-solutions">Web Development Solutions</div>
+                  <div class="custom-option" data-value="mobile-app-development">Mobile App Development</div>
+                  <div class="custom-option" data-value="full-stack-development">Full Stack Development</div>
+                  <div class="custom-option" data-value="content-optimization">Content &amp; Optimization</div>
+                  <div class="custom-option" data-value="automation-solutions">Automation Solutions</div>
+
+                  <!-- ── Advertisements ── -->
                   <div class="custom-group-label">Advertisements</div>
                   <div class="custom-option" data-value="google-ads">Google Ads</div>
-                  <div class="custom-option" data-value="meta-ads">Meta Ads (Facebook & Instagram)</div>
+                  <div class="custom-option" data-value="meta-ads">Meta Ads (Facebook &amp; Instagram)</div>
                   <div class="custom-option" data-value="tiktok-ads">TikTok Ads</div>
                   <div class="custom-option" data-value="linkedin-ads">LinkedIn Ads</div>
                   <div class="custom-option" data-value="youtube-ads">YouTube Ads</div>
                   <div class="custom-option" data-value="whatsapp-ads">WhatsApp Ads</div>
                   <div class="custom-option" data-value="snapchat-ads">Snapchat Ads</div>
                   <div class="custom-option" data-value="pinterest-ads">Pinterest Ads</div>
-                  <div class="custom-option" data-value="retargeting-ads">Retargeting / Remarketing Ads</div>
+                  <div class="custom-option" data-value="retargeting-remarketing-ads">Retargeting / Remarketing Ads</div>
                   <div class="custom-option" data-value="programmatic-ads">Programmatic Ads</div>
-                  
-                  <div class="custom-group-label">Content & Creative</div>
-                  <div class="custom-option" data-value="copywriting">Copywriting & Ad Copy</div>
-                  <div class="custom-option" data-value="ad-creatives">Ad Creatives Design</div>
+                  <div class="custom-option" data-value="x-twitter-ads">X/Twitter Ads</div>
+                  <div class="custom-option" data-value="telegram-ads">Telegram Ads</div>
+
+                  <!-- ── Content & Creative ── -->
+                  <div class="custom-group-label">Content &amp; Creative</div>
+                  <div class="custom-option" data-value="copywriting-ad-copy">Copywriting &amp; Ad Copy</div>
+                  <div class="custom-option" data-value="ad-creatives-design">Ad Creatives Design</div>
                   <div class="custom-option" data-value="graphic-design">Graphic Design</div>
-                  <div class="custom-option" data-value="video-production">Video Production & Editing</div>
+                  <div class="custom-option" data-value="video-production-editing">Video Production &amp; Editing</div>
                   <div class="custom-option" data-value="content-writing">Content Writing</div>
-                  <div class="custom-option" data-value="social-content">Social Media Content Creation</div>
-                  <div class="custom-option" data-value="motion-graphics">Motion Graphics & Animation</div>
-                  <div class="custom-option" data-value="creative-campaign">Creative Campaign Development</div>
-                  
+                  <div class="custom-option" data-value="social-media-content-creation">Social Media Content Creation</div>
+                  <div class="custom-option" data-value="motion-graphics-animation">Motion Graphics &amp; Animation</div>
+                  <div class="custom-option" data-value="creative-campaign-development">Creative Campaign Development</div>
+                  <div class="custom-option" data-value="newsletter-copywriting">Newsletter Copywriting</div>
+                  <div class="custom-option" data-value="email-newsletter-design">Email Newsletter Design</div>
+
+                  <!-- ── Cyber Security ── -->
                   <div class="custom-group-label">Cyber Security</div>
-                  <div class="custom-option" data-value="web-pentest">Web Application Penetration Testing</div>
-                  <div class="custom-option" data-value="android-pentest">Android Application Penetration Testing</div>
-                  <div class="custom-option" data-value="ios-pentest">iOS Application Penetration Testing</div>
+                  <div class="custom-option" data-value="web-app-pentest">Web Application Penetration Testing</div>
+                  <div class="custom-option" data-value="android-app-pentest">Android Application Penetration Testing</div>
+                  <div class="custom-option" data-value="ios-app-pentest">iOS Application Penetration Testing</div>
                   <div class="custom-option" data-value="network-pentest">Network Penetration Testing</div>
-                  <div class="custom-option" data-value="brand-protection">Digital Brand Protection</div>
-                  
+                  <div class="custom-option" data-value="digital-brand-protection">Digital Brand Protection</div>
+
                   <div class="custom-option" data-value="other">Other / Custom Requirement</div>
                 </div>
                 <input type="hidden" id="service" name="service" required>
                 <span class="form-error">Please select a service</span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">How Did You Hear About Us?</label>
-              <div class="custom-select" id="source-select">
-                <div class="custom-select-trigger">Select an option…</div>
-                <div class="custom-options">
-                  <div class="custom-option" data-value="google">Google Search</div>
-                  <div class="custom-option" data-value="social-media">Social Media</div>
-                  <div class="custom-option" data-value="referral">Referral / Word of Mouth</div>
-                  <div class="custom-option" data-value="instagram">Instagram</div>
-                  <div class="custom-option" data-value="linkedin">LinkedIn</div>
-                  <div class="custom-option" data-value="tiktok">TikTok</div>
-                  <div class="custom-option" data-value="youtube">YouTube</div>
-                  <div class="custom-option" data-value="other">Other</div>
-                </div>
-                <input type="hidden" id="source" name="source">
-                <span class="form-error"></span>
               </div>
             </div>
 
@@ -515,12 +1015,6 @@
               <span class="form-error">Please tell us about your project</span>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="call-time">Preferred Date for Call</label>
-              <input class="form-input" type="date" id="call-time" name="call-time">
-              <span class="form-error"></span>
-            </div>
-
             <div style="margin-top:40px; display:flex; justify-content:center;">
               <button type="submit" class="btn-majestic-primary btn-shimmer"
                 style="width:100%; justify-content:center; font-size:18px; padding:20px 32px; height: auto;">
@@ -528,10 +1022,7 @@
               </button>
             </div>
 
-            <div id="form-success" class="form-success" role="alert">
-              ✓ Thank you! We've received your message and will get back to you within 24 hours. Check your email for a
-              confirmation.
-            </div>
+            <div id="form-success" class="form-success" role="alert" style="display:none;"></div>
           </form>
         </div>
 
@@ -742,6 +1233,35 @@
     </svg>
     <span class="wa-tooltip">Chat with us on WhatsApp</span>
   </a>
+
+  <!-- ── CALENDLY MODAL ── -->
+  <div id="calendly-overlay" role="dialog" aria-modal="true" aria-labelledby="cal-modal-title">
+    <div class="calendly-modal-box">
+      <div class="calendly-modal-header">
+        <div class="calendly-modal-header-text">
+          <h3 id="cal-modal-title"><span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:linear-gradient(135deg,#C9A84C,#a87c20);border-radius:8px;margin-right:12px;font-size:15px;color:#0D0D0D;vertical-align:middle;box-shadow:0 3px 10px rgba(201,168,76,0.35);"><i class="far fa-calendar-alt"></i></span>Book Your Free Strategy Call</h3>
+          <p>Pick a time that works for you — your details are already filled in!</p>
+          <div class="cal-client-badge">
+            <i class="fas fa-user-check"></i>
+            <span id="cal-client-name">Loading…</span>
+          </div>
+        </div>
+        <button class="calendly-close-btn" id="calendly-close-btn" aria-label="Close booking calendar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="calendly-modal-body">
+        <div class="cal-loading" id="cal-loading">
+          <div class="cal-spinner"></div>
+          <p>Loading your calendar…</p>
+        </div>
+        <div id="calendly-embed-container" style="height:100%; min-height:580px; position:relative;">
+          <!-- Timezone hider overlay — sits at the bottom of the iframe -->
+          <div id="cal-tz-hider" style="display:none;position:absolute;bottom:0;left:0;right:0;height:62px;background:#0D0D0D;z-index:10;border-radius:0 0 12px 12px;pointer-events:none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>

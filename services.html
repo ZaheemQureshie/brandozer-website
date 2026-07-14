@@ -84,6 +84,33 @@
       opacity: 0.8;
       line-height: 1.7;
     }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--color-ivory);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+    }
+
+    .service-tag:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .service-tags-container {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 
@@ -177,7 +204,7 @@
           role="tablist">
           <button class="services-tab active" data-target="p1" role="tab" aria-selected="true">Brand Building</button>
           <button class="services-tab" data-target="p2" role="tab">Social Media</button>
-          <button class="services-tab" data-target="p3" role="tab">Web Development</button>
+          <button class="services-tab" data-target="p3" role="tab">Technology Development & Automation Solutions</button>
           <button class="services-tab" data-target="p4" role="tab">Advertisements</button>
           <button class="services-tab" data-target="p5" role="tab">Content & Creative</button>
           <button class="services-tab" data-target="p6" role="tab">Cyber Security</button>
@@ -187,50 +214,234 @@
         <div id="p1" class="services-panel active reveal" role="tabpanel">
           <div class="service-row">
             <div class="service-row-num">01</div>
-            <div>
-              <div class="service-row-title">Brand Strategy & Positioning</div>
-              <p class="service-row-desc">Defining your brand purpose, target audience, market perception, and unique
-                positioning for long-term growth.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Brand Strategy</div>
+              <p class="service-row-desc">The foundation before designing anything. Helps the client understand who they are, who they serve, and why people should choose them.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Brand discovery questionnaire</span>
+                <span class="service-tag">Client/business audit</span>
+                <span class="service-tag">Competitor analysis</span>
+                <span class="service-tag">Target audience research</span>
+                <span class="service-tag">Customer persona</span>
+                <span class="service-tag">Brand positioning</span>
+                <span class="service-tag">Unique selling proposition (USP)</span>
+                <span class="service-tag">Brand mission</span>
+                <span class="service-tag">Brand vision</span>
+                <span class="service-tag">Brand values</span>
+                <span class="service-tag">Brand personality</span>
+                <span class="service-tag">Brand tone of voice</span>
+                <span class="service-tag">Brand promise</span>
+                <span class="service-tag">Brand story</span>
+                <span class="service-tag">Tagline or slogan</span>
+                <span class="service-tag">Brand messaging framework</span>
+                <span class="service-tag">Brand keywords</span>
+                <span class="service-tag">Brand archetype</span>
+                <span class="service-tag">Market positioning map</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">02</div>
-            <div>
-              <div class="service-row-title">Brand Naming & Tagline Development</div>
-              <p class="service-row-desc">Crafting memorable brand names, taglines, and messaging foundations that
-                create recall and authority.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Logo Design</div>
+              <p class="service-row-desc">The core visual identity.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Primary logo</span>
+                <span class="service-tag">Secondary logo</span>
+                <span class="service-tag">Logo mark / icon</span>
+                <span class="service-tag">Favicon</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">03</div>
-            <div>
-              <div class="service-row-title">Logo Design & Visual Identity</div>
-              <p class="service-row-desc">Designing a professional logo system, color direction, typography, and visual
-                elements that represent your brand.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Color Palette</div>
+              <div class="service-tags-container" style="margin-top: 6px;">
+                <span class="service-tag">Primary colors</span>
+                <span class="service-tag">Secondary colors</span>
+                <span class="service-tag">Accent colors</span>
+                <span class="service-tag">Color usage guidelines</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">04</div>
-            <div>
-              <div class="service-row-title">Brand Guidelines Document</div>
-              <p class="service-row-desc">Creating a complete brand guide to ensure visual consistency, messaging
-                clarity, and professional usage across all platforms.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Typography / Fonts</div>
+              <p class="service-row-desc">Controls how the brand feels in text.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Primary font</span>
+                <span class="service-tag">Secondary font</span>
+                <span class="service-tag">Heading font</span>
+                <span class="service-tag">Body font</span>
+                <span class="service-tag">Accent/display font</span>
+                <span class="service-tag">Font pairing system</span>
+                <span class="service-tag">Font hierarchy</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">05</div>
-            <div>
-              <div class="service-row-title">Brand Collateral Design</div>
-              <p class="service-row-desc">Designing business cards, social templates, presentations, stationery, and
-                marketing assets aligned with your identity.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Brand Messaging & Copywriting</div>
+              <p class="service-row-desc">Copywriting — writing for marketing and sales (not to be confused with copyright, which is legal ownership).</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Brand tagline</span>
+                <span class="service-tag">Elevator pitch</span>
+                <span class="service-tag">About us copy</span>
+                <span class="service-tag">Website headline</span>
+                <span class="service-tag">Website subheadline</span>
+                <span class="service-tag">Product/service descriptions</span>
+                <span class="service-tag">Brand story</span>
+                <span class="service-tag">Founder story</span>
+                <span class="service-tag">Social media bio</span>
+                <span class="service-tag">Ad copy</span>
+                <span class="service-tag">Sales copy</span>
+                <span class="service-tag">Email copy</span>
+                <span class="service-tag">Call-to-action phrases</span>
+                <span class="service-tag">Brand tone of voice guide</span>
+                <span class="service-tag">Messaging pillars</span>
+                <span class="service-tag">Content pillars</span>
+                <span class="service-tag">Newsletter copywriting</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">06</div>
-            <div>
-              <div class="service-row-title">Brand Communication Assets</div>
-              <p class="service-row-desc">Developing branded messaging, profile bios, introductory descriptions, and
-                customer-facing communication materials.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Brand Technology Design, Development & Automation</div>
+              <p class="service-row-desc">A strong add-on for a full branding package.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Website strategy</span>
+                <span class="service-tag">Basic SEO structure</span>
+                <span class="service-tag">Sitemap</span>
+                <span class="service-tag">Website copywriting</span>
+                <span class="service-tag">Wireframes</span>
+                <span class="service-tag">UI design</span>
+                <span class="service-tag">UX design</span>
+                <span class="service-tag">Mobile responsive design</span>
+                <span class="service-tag">Brand website design and development</span>
+                <span class="service-tag">Landing page design</span>
+                <span class="service-tag">E-commerce website design and development</span>
+                <span class="service-tag">Full Stack Web Development</span>
+                <span class="service-tag">SaaS Development</span>
+                <span class="service-tag">Android App Design and Development</span>
+                <span class="service-tag">IOS App Design and Development</span>
+                <span class="service-tag">Cross-platform App Design and Development</span>
+                <span class="service-tag">Full Stack App Development</span>
+                <span class="service-tag">Full Stack Desktop Software Development</span>
+                <span class="service-tag">n8n Automation</span>
+                <span class="service-tag">Developing smart automations</span>
+                <span class="service-tag">CRM integrations</span>
+                <span class="service-tag">Lead capture systems</span>
+                <span class="service-tag">Workflow automation</span>
+                <span class="service-tag">Business process solutions for efficiency</span>
+                <span class="service-tag">E-Commerce Product Landing Page Design</span>
+              </div>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">07</div>
+            <div style="width: 100%;">
+              <div class="service-row-title">Social Media Branding</div>
+              <p class="service-row-desc">Keeps the brand consistent online.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Instagram profile/page branding</span>
+                <span class="service-tag">Facebook page branding</span>
+                <span class="service-tag">LinkedIn page branding</span>
+                <span class="service-tag">TikTok profile branding</span>
+                <span class="service-tag">YouTube channel branding</span>
+                <span class="service-tag">Pinterest profile branding</span>
+                <span class="service-tag">X (Twitter) profile branding</span>
+                <span class="service-tag">Threads profile branding</span>
+                <span class="service-tag">WhatsApp Business branding</span>
+                <span class="service-tag">Snapchat branding</span>
+                <span class="service-tag">Telegram channel branding</span>
+              </div>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">08</div>
+            <div style="width: 100%;">
+              <div class="service-row-title">Advertising Creative</div>
+              <div class="service-tags-container" style="margin-top: 6px;">
+                <span class="service-tag">Static image ads</span>
+                <span class="service-tag">Video ads</span>
+                <span class="service-tag">UGC ads</span>
+                <span class="service-tag">Carousel ads</span>
+                <span class="service-tag">Ad copy</span>
+              </div>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">09</div>
+            <div style="width: 100%;">
+              <div class="service-row-title">Packaging Design & Product Presentation</div>
+              <div class="service-tags-container" style="margin-top: 6px;">
+                <span class="service-tag">Product Packaging Design</span>
+                <span class="service-tag">Label Design</span>
+                <span class="service-tag">E-Commerce Packaging Design</span>
+                <span class="service-tag">Retail Packaging Design</span>
+                <span class="service-tag">Packaging Visual System</span>
+                <span class="service-tag">Packaging Copywriting</span>
+                <span class="service-tag">Packaging Mockups Design</span>
+                <span class="service-tag">Packaging Print-Ready Files</span>
+                <span class="service-tag">Packaging Guidelines</span>
+              </div>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">10</div>
+            <div style="width: 100%;">
+              <div class="service-row-title">Social Media Graphics Design</div>
+              <div class="service-tags-container" style="margin-top: 6px;">
+                <span class="service-tag">Static image post</span>
+                <span class="service-tag">Carousel post design</span>
+                <span class="service-tag">Banner design</span>
+                <span class="service-tag">Poster design (social-sized)</span>
+                <span class="service-tag">Pamphlet / flyer-style post</span>
+                <span class="service-tag">Quote post design</span>
+                <span class="service-tag">Infographic post design</span>
+                <span class="service-tag">Before/after post design</span>
+                <span class="service-tag">Testimonial post design</span>
+                <span class="service-tag">Product showcase post</span>
+                <span class="service-tag">Announcement post design</span>
+                <span class="service-tag">Event promo post design</span>
+                <span class="service-tag">Meme / trend-style post design</span>
+                <span class="service-tag">Video post design (Reels/Shorts/TikTok-style short video)</span>
+                <span class="service-tag">Video post design (long-form feed video)</span>
+                <span class="service-tag">Video post design (talking-head/UGC-style video)</span>
+                <span class="service-tag">Video post design (product demo/how-to video)</span>
+                <span class="service-tag">Slideshow-to-video post design</span>
+                <span class="service-tag">Email newsletter design</span>
+              </div>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">11</div>
+            <div style="width: 100%;">
+              <div class="service-row-title">Print & Stationery Design</div>
+              <p class="service-row-desc">For professional brand presence.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Business card</span>
+                <span class="service-tag">Letterhead</span>
+                <span class="service-tag">Envelope</span>
+                <span class="service-tag">Invoice template</span>
+                <span class="service-tag">Receipt template</span>
+                <span class="service-tag">Quotation template</span>
+                <span class="service-tag">Proposal template</span>
+                <span class="service-tag">Presentation template</span>
+                <span class="service-tag">Brochure</span>
+                <span class="service-tag">Flyer</span>
+                <span class="service-tag">Poster</span>
+                <span class="service-tag">Menu</span>
+                <span class="service-tag">Catalog</span>
+                <span class="service-tag">Company profile</span>
+                <span class="service-tag">ID card</span>
+                <span class="service-tag">Notepad</span>
+                <span class="service-tag">Folder design</span>
+              </div>
             </div>
           </div>
         </div>
@@ -287,70 +498,85 @@
           </div>
         </div>
 
-        <!-- Panel 3: Website Design & Development -->
+        <!-- Panel 3: Web & Mobile App Design / Development -->
         <div id="p3" class="services-panel reveal" role="tabpanel">
           <div class="service-row">
             <div class="service-row-num">01</div>
-            <div>
-              <div class="service-row-title">Website Strategy & Wireframing</div>
-              <p class="service-row-desc">Planning the complete website structure, user journey, page hierarchy, and
-                conversion-focused wireframes before execution.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Website Design & Strategy</div>
+              <p class="service-row-desc">Comprehensive planning, structural design, and visual execution for digital platforms.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Website strategy</span>
+                <span class="service-tag">Sitemap</span>
+                <span class="service-tag">Wireframes</span>
+                <span class="service-tag">UI design</span>
+                <span class="service-tag">UX design</span>
+                <span class="service-tag">Mobile responsive design</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">02</div>
-            <div>
-              <div class="service-row-title">Custom UI/UX Website Design</div>
-              <p class="service-row-desc">Designing modern, engaging, and user-friendly website interfaces tailored to
-                your brand identity and audience.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Web Development Solutions</div>
+              <p class="service-row-desc">Robust development for corporate sites, online stores, and high-converting landing pages.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Brand website design and development</span>
+                <span class="service-tag">E-commerce website design and development</span>
+                <span class="service-tag">Landing page design</span>
+                <span class="service-tag">E-Commerce Product Landing Page Design</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">03</div>
-            <div>
-              <div class="service-row-title">Front-End Development</div>
-              <p class="service-row-desc">Developing clean, responsive, and interactive front-end experiences that
-                perform smoothly across all devices.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Mobile App Development</div>
+              <p class="service-row-desc">Native and cross-platform mobile applications tailored for optimal user experience.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Android App Design and Development</span>
+                <span class="service-tag">IOS App Design and Development</span>
+                <span class="service-tag">Cross-platform App Design and Development</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">04</div>
-            <div>
-              <div class="service-row-title">Full-Stack Web Development</div>
-              <p class="service-row-desc">Building dynamic, scalable, and high-performance web systems with custom
-                backend functionality and database integration.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Full Stack Development</div>
+              <p class="service-row-desc">Scalable software solutions including cloud-based applications and desktop tools.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Full Stack Web Development</span>
+                <span class="service-tag">SaaS Development</span>
+                <span class="service-tag">Full Stack App Development</span>
+                <span class="service-tag">Full Stack Desktop Software Development</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">05</div>
-            <div>
-              <div class="service-row-title">CMS & E-Commerce Development</div>
-              <p class="service-row-desc">Creating easy-to-manage CMS websites, business portals, and conversion-driven
-                e-commerce stores with seamless functionality.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Content & Optimization</div>
+              <p class="service-row-desc">Strategic content creation and search engine foundation for higher visibility.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Website copywriting</span>
+                <span class="service-tag">Basic SEO structure</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">06</div>
-            <div>
-              <div class="service-row-title">Web Automation & System Integration</div>
-              <p class="service-row-desc">Developing smart automations, CRM integrations, lead capture systems, workflow
-                automation, and business process solutions for efficiency.</p>
-            </div>
-          </div>
-          <div class="service-row">
-            <div class="service-row-num">07</div>
-            <div>
-              <div class="service-row-title">Landing Pages & Funnels</div>
-              <p class="service-row-desc">Developing high-converting landing pages, sales funnels, ongoing optimization,
-                technical support, and long-term maintenance.</p>
-            </div>
-          </div>
-          <div class="service-row">
-            <div class="service-row-num">08</div>
-            <div>
-              <div class="service-row-title">Search Engine Optimization (SEO)</div>
-              <p class="service-row-desc">On-page, off-page, and technical SEO to rank your brand higher and drive
-                consistent organic traffic.</p>
+            <div style="width: 100%;">
+              <div class="service-row-title">Automation Solutions</div>
+              <p class="service-row-desc">Streamline and scale your business operations with powerful technical automations.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">n8n Automation</span>
+                <span class="service-tag">Developing smart automations</span>
+                <span class="service-tag">CRM integrations</span>
+                <span class="service-tag">lead capture systems</span>
+                <span class="service-tag">workflow automation</span>
+                <span class="service-tag">business process solutions for efficiency</span>
+              </div>
             </div>
           </div>
         </div>
@@ -437,6 +663,20 @@
                 efficiency.</p>
             </div>
           </div>
+          <div class="service-row">
+            <div class="service-row-num">11</div>
+            <div>
+              <div class="service-row-title">X/Twitter Ads</div>
+              <p class="service-row-desc">Driving real-time conversations and engaging audiences through trending topics and targeted promotions.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">12</div>
+            <div>
+              <div class="service-row-title">Telegram Ads</div>
+              <p class="service-row-desc">Reaching highly engaged communities with direct, privacy-focused advertising in channels and groups.</p>
+            </div>
+          </div>
         </div>
 
         <!-- Panel 5: Content & Creative -->
@@ -451,26 +691,55 @@
           </div>
           <div class="service-row">
             <div class="service-row-num">02</div>
-            <div>
+            <div style="width: 100%;">
               <div class="service-row-title">Ad Creatives Design</div>
               <p class="service-row-desc">High-performing static and dynamic ad creatives for Google, Meta, and TikTok
                 that maximize conversions.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Static image ads</span>
+                <span class="service-tag">Video ads</span>
+                <span class="service-tag">UGC ads</span>
+                <span class="service-tag">Carousel ads</span>
+                <span class="service-tag">Ad copy</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">03</div>
-            <div>
+            <div style="width: 100%;">
               <div class="service-row-title">Graphic Design</div>
               <p class="service-row-desc">Scroll-stopping visuals including social media posts, banners, and marketing
                 assets that strengthen identity.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Static image post</span>
+                <span class="service-tag">Carousel post design</span>
+                <span class="service-tag">Banner design</span>
+                <span class="service-tag">Poster design (social-sized)</span>
+                <span class="service-tag">Pamphlet / flyer-style post</span>
+                <span class="service-tag">Quote post design</span>
+                <span class="service-tag">Infographic post design</span>
+                <span class="service-tag">Before/after post design</span>
+                <span class="service-tag">Testimonial post design</span>
+                <span class="service-tag">Product showcase post</span>
+                <span class="service-tag">Announcement post design</span>
+                <span class="service-tag">Event promo post design</span>
+                <span class="service-tag">Meme / trend-style post design</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
             <div class="service-row-num">04</div>
-            <div>
+            <div style="width: 100%;">
               <div class="service-row-title">Video Production & Editing</div>
               <p class="service-row-desc">Producing engaging short-form and long-form videos such as Reels, TikToks, and
                 brand stories.</p>
+              <div class="service-tags-container">
+                <span class="service-tag">Short-Form Video Content Design</span>
+                <span class="service-tag">Long-Form Video Content Design</span>
+                <span class="service-tag">UGC & Talking-Head Video Design</span>
+                <span class="service-tag">Product Demo & How-To Video Design</span>
+                <span class="service-tag">Slideshow Video Design</span>
+              </div>
             </div>
           </div>
           <div class="service-row">
@@ -503,6 +772,20 @@
               <div class="service-row-title">Creative Campaign Development</div>
               <p class="service-row-desc">Planning and executing full creative concepts that align visuals, copy, and
                 strategy for maximum impact.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">09</div>
+            <div style="width: 100%;">
+              <div class="service-row-title">Newsletter Copywriting</div>
+              <p class="service-row-desc">Crafting engaging and persuasive newsletters that build brand loyalty, nurture leads, and drive action.</p>
+            </div>
+          </div>
+          <div class="service-row">
+            <div class="service-row-num">10</div>
+            <div style="width: 100%;">
+              <div class="service-row-title">Email Newsletter Design</div>
+              <p class="service-row-desc">Creating visually stunning, responsive, and click-optimized email layouts that enhance readability and conversion.</p>
             </div>
           </div>
         </div>

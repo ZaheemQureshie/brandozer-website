@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════ */
 
 // ─── Testimonial Slider ───
-(function() {
+(function () {
   const sliders = document.querySelectorAll('.testimonial-slider');
   sliders.forEach(slider => {
     const track = slider.querySelector('.testimonial-track');
@@ -53,7 +53,7 @@
 })();
 
 // ─── FAQ Accordion ───
-(function() {
+(function () {
   document.querySelectorAll('.faq-item').forEach(item => {
     const question = item.querySelector('.faq-question');
     if (!question) return;
@@ -67,7 +67,7 @@
 })();
 
 // ─── Job Accordion ───
-(function() {
+(function () {
   document.querySelectorAll('.job-item').forEach(item => {
     const header = item.querySelector('.job-header');
     if (!header) return;
@@ -78,7 +78,7 @@
 })();
 
 // ─── Services Accordion / Tab ───
-(function() {
+(function () {
   document.querySelectorAll('.services-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const target = tab.dataset.target;
@@ -91,7 +91,7 @@
 })();
 
 // ─── Portfolio Filter ───
-(function() {
+(function () {
   const filterTabs = document.querySelectorAll('.filter-tab');
   const portfolioCards = document.querySelectorAll('.portfolio-card');
   if (!filterTabs.length) return;
@@ -119,7 +119,7 @@
 })();
 
 // ─── Blog Category Filter ───
-(function() {
+(function () {
   const blogTabs = document.querySelectorAll('.blog-filter-tab');
   const blogCards = document.querySelectorAll('.blog-card');
   if (!blogTabs.length) return;
@@ -139,7 +139,7 @@
 })();
 
 // ─── Pricing Toggle ───
-(function() {
+(function () {
   const toggle = document.getElementById('pricing-toggle');
   const monthly = document.querySelectorAll('.price-monthly');
   const oneTime = document.querySelectorAll('.price-onetime');
@@ -156,8 +156,155 @@
   });
 })();
 
-// ─── Contact Form Validation & FormSubmit.co Integration ───
-(function() {
+// ─── Country Code Picker ───
+(function () {
+  const COUNTRIES = [
+    { flag: '🇵🇰', name: 'Pakistan', dial: '+92' },
+    { flag: '🇺🇸', name: 'United States', dial: '+1' },
+    { flag: '🇬🇧', name: 'United Kingdom', dial: '+44' },
+    { flag: '🇦🇪', name: 'UAE', dial: '+971' },
+    { flag: '🇸🇦', name: 'Saudi Arabia', dial: '+966' },
+    { flag: '🇶🇦', name: 'Qatar', dial: '+974' },
+    { flag: '🇰🇼', name: 'Kuwait', dial: '+965' },
+    { flag: '🇧🇭', name: 'Bahrain', dial: '+973' },
+    { flag: '🇴🇲', name: 'Oman', dial: '+968' },
+    { flag: '🇮🇳', name: 'India', dial: '+91' },
+    { flag: '🇧🇩', name: 'Bangladesh', dial: '+880' },
+    { flag: '🇳🇬', name: 'Nigeria', dial: '+234' },
+    { flag: '🇬🇭', name: 'Ghana', dial: '+233' },
+    { flag: '🇰🇪', name: 'Kenya', dial: '+254' },
+    { flag: '🇿🇦', name: 'South Africa', dial: '+27' },
+    { flag: '🇪🇬', name: 'Egypt', dial: '+20' },
+    { flag: '🇲🇦', name: 'Morocco', dial: '+212' },
+    { flag: '🇩🇿', name: 'Algeria', dial: '+213' },
+    { flag: '🇹🇳', name: 'Tunisia', dial: '+216' },
+    { flag: '🇩🇪', name: 'Germany', dial: '+49' },
+    { flag: '🇫🇷', name: 'France', dial: '+33' },
+    { flag: '🇮🇹', name: 'Italy', dial: '+39' },
+    { flag: '🇪🇸', name: 'Spain', dial: '+34' },
+    { flag: '🇳🇱', name: 'Netherlands', dial: '+31' },
+    { flag: '🇨🇭', name: 'Switzerland', dial: '+41' },
+    { flag: '🇦🇺', name: 'Australia', dial: '+61' },
+    { flag: '🇨🇦', name: 'Canada', dial: '+1' },
+    { flag: '🇸🇬', name: 'Singapore', dial: '+65' },
+    { flag: '🇲🇾', name: 'Malaysia', dial: '+60' },
+    { flag: '🇮🇩', name: 'Indonesia', dial: '+62' },
+    { flag: '🇹🇷', name: 'Turkey', dial: '+90' },
+    { flag: '🇷🇺', name: 'Russia', dial: '+7' },
+    { flag: '🇧🇷', name: 'Brazil', dial: '+55' },
+    { flag: '🇲🇽', name: 'Mexico', dial: '+52' },
+    { flag: '🇦🇷', name: 'Argentina', dial: '+54' },
+    { flag: '🇨🇳', name: 'China', dial: '+86' },
+    { flag: '🇯🇵', name: 'Japan', dial: '+81' },
+    { flag: '🇰🇷', name: 'South Korea', dial: '+82' },
+    { flag: '🇵🇭', name: 'Philippines', dial: '+63' },
+    { flag: '🇹🇭', name: 'Thailand', dial: '+66' },
+    { flag: '🇻🇳', name: 'Vietnam', dial: '+84' },
+    { flag: '🇳🇿', name: 'New Zealand', dial: '+64' },
+    { flag: '🇮🇷', name: 'Iran', dial: '+98' },
+    { flag: '🇮🇶', name: 'Iraq', dial: '+964' },
+    { flag: '🇱🇧', name: 'Lebanon', dial: '+961' },
+    { flag: '🇯🇴', name: 'Jordan', dial: '+962' },
+    { flag: '🇾🇪', name: 'Yemen', dial: '+967' },
+    { flag: '🇱🇾', name: 'Libya', dial: '+218' },
+    { flag: '🇸🇩', name: 'Sudan', dial: '+249' },
+    { flag: '🇪🇹', name: 'Ethiopia', dial: '+251' },
+    { flag: '🇹🇿', name: 'Tanzania', dial: '+255' },
+    { flag: '🇺🇬', name: 'Uganda', dial: '+256' },
+    { flag: '🇸🇳', name: 'Senegal', dial: '+221' },
+    { flag: '🇵🇱', name: 'Poland', dial: '+48' },
+    { flag: '🇸🇪', name: 'Sweden', dial: '+46' },
+    { flag: '🇳🇴', name: 'Norway', dial: '+47' },
+    { flag: '🇩🇰', name: 'Denmark', dial: '+45' },
+    { flag: '🇫🇮', name: 'Finland', dial: '+358' },
+    { flag: '🇵🇹', name: 'Portugal', dial: '+351' },
+    { flag: '🇬🇷', name: 'Greece', dial: '+30' },
+    { flag: '🇭🇺', name: 'Hungary', dial: '+36' },
+    { flag: '🇷🇴', name: 'Romania', dial: '+40' },
+    { flag: '🇨🇿', name: 'Czech Republic', dial: '+420' },
+    { flag: '🇦🇹', name: 'Austria', dial: '+43' },
+    { flag: '🇧🇪', name: 'Belgium', dial: '+32' },
+    { flag: '🇮🇪', name: 'Ireland', dial: '+353' },
+    { flag: '🇦🇫', name: 'Afghanistan', dial: '+93' },
+    { flag: '🇱🇰', name: 'Sri Lanka', dial: '+94' },
+    { flag: '🇳🇵', name: 'Nepal', dial: '+977' },
+    { flag: '🇲🇻', name: 'Maldives', dial: '+960' },
+  ];
+
+  const ccWrap = document.getElementById('cc-wrap');
+  const ccBtn = document.getElementById('cc-btn');
+  const ccFlag = document.getElementById('cc-flag');
+  const ccCode = document.getElementById('cc-code');
+  const ccList = document.getElementById('cc-list');
+  const ccSearchInput = document.getElementById('cc-search-input');
+  const phoneHidden = document.getElementById('phone');
+  const phoneNumber = document.getElementById('phone-number');
+
+  if (!ccWrap || !ccBtn) return;
+
+  let selectedDial = '+92';
+
+  function renderList(filter) {
+    if (!ccList) return;
+    const q = (filter || '').toLowerCase();
+    const filtered = q ? COUNTRIES.filter(c =>
+      c.name.toLowerCase().includes(q) || c.dial.includes(q)
+    ) : COUNTRIES;
+
+    ccList.innerHTML = filtered.map(c => `
+      <div class="cc-item" data-dial="${c.dial}" data-flag="${c.flag}" role="option">
+        <span class="cc-item-flag">${c.flag}</span>
+        <span class="cc-item-name">${c.name}</span>
+        <span class="cc-item-dial">${c.dial}</span>
+      </div>
+    `).join('');
+
+    ccList.querySelectorAll('.cc-item').forEach(item => {
+      item.addEventListener('click', () => {
+        selectedDial = item.dataset.dial;
+        ccFlag.textContent = item.dataset.flag;
+        ccCode.textContent = selectedDial;
+        ccWrap.classList.remove('open');
+        ccBtn.setAttribute('aria-expanded', 'false');
+        syncPhone();
+        phoneNumber.focus();
+      });
+    });
+  }
+
+  function syncPhone() {
+    if (!phoneHidden || !phoneNumber) return;
+    const num = phoneNumber.value.trim();
+    phoneHidden.value = num ? `${selectedDial} ${num}` : '';
+  }
+
+  phoneNumber && phoneNumber.addEventListener('input', syncPhone);
+
+  ccBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = ccWrap.classList.toggle('open');
+    ccBtn.setAttribute('aria-expanded', String(isOpen));
+    if (isOpen) {
+      if (ccSearchInput) { ccSearchInput.value = ''; ccSearchInput.focus(); }
+      renderList('');
+    }
+  });
+
+  ccSearchInput && ccSearchInput.addEventListener('input', () => renderList(ccSearchInput.value));
+
+  document.addEventListener('click', (e) => {
+    if (!ccWrap.contains(e.target)) {
+      ccWrap.classList.remove('open');
+      ccBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Initial render
+  renderList('');
+})();
+
+// ─── Contact Form Validation & Submission ───
+(function () {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
@@ -166,26 +313,20 @@
   const phoneInput = document.getElementById('phone');
   const companyInput = document.getElementById('company');
   const serviceInput = document.getElementById('service');
-  const sourceInput = document.getElementById('source');
   const messageInput = document.getElementById('message');
-  const callTimeInput = document.getElementById('call-time');
   const submitBtn = form.querySelector('button[type="submit"]');
   const successBox = document.getElementById('form-success');
 
-  // Input listener to remove error class on change
+  // Remove error state on input
   form.querySelectorAll('.form-input, .form-textarea').forEach(input => {
-    input.addEventListener('input', () => {
-      input.classList.remove('error');
-    });
+    input.addEventListener('input', () => input.classList.remove('error'));
   });
 
   // Watch hidden service input for selection changes
   const serviceSelect = document.getElementById('service-select');
   if (serviceSelect && serviceInput) {
     const observer = new MutationObserver(() => {
-      if (serviceInput.value) {
-        serviceSelect.classList.remove('error');
-      }
+      if (serviceInput.value) serviceSelect.classList.remove('error');
     });
     observer.observe(serviceInput, { attributes: true, attributeFilter: ['value'] });
   }
@@ -194,212 +335,291 @@
     e.preventDefault();
     let valid = true;
 
-    // Reset error styling
-    form.querySelectorAll('.form-input, .form-textarea, .custom-select').forEach(field => {
-      field.classList.remove('error');
-    });
+    form.querySelectorAll('.form-input, .form-textarea, .custom-select').forEach(f => f.classList.remove('error'));
 
-    // Validate Full Name
-    if (!fullNameInput.value.trim()) {
-      fullNameInput.classList.add('error');
-      valid = false;
-    }
-
-    // Validate Email
+    if (!fullNameInput.value.trim()) { fullNameInput.classList.add('error'); valid = false; }
     if (!emailInput.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-      emailInput.classList.add('error');
-      valid = false;
+      emailInput.classList.add('error'); valid = false;
     }
-
-    // Validate Service Required
-    if (!serviceInput.value.trim()) {
-      serviceSelect?.classList.add('error');
-      valid = false;
-    }
-
-    // Validate Message
-    if (!messageInput.value.trim()) {
-      messageInput.classList.add('error');
-      valid = false;
-    }
+    if (!serviceInput.value.trim()) { serviceSelect?.classList.add('error'); valid = false; }
+    if (!messageInput.value.trim()) { messageInput.classList.add('error'); valid = false; }
 
     if (!valid) {
-      // Find the first error element and scroll to it
-      const firstError = form.querySelector('.error, .custom-select.error');
-      firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      form.querySelector('.error, .custom-select.error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
-    // Capture and format values
     const fullName = fullNameInput.value.trim();
     const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim() || "Not provided";
-    const company = companyInput.value.trim() || "Not provided";
+    const phone = phoneInput.value.trim() || 'Not provided';
+    const company = companyInput.value.trim() || 'Not provided';
     const serviceValue = serviceInput.value.trim();
-    const sourceValue = sourceInput.value.trim() || "Not provided";
     const message = messageInput.value.trim();
-    const callTime = callTimeInput.value.trim() || "Not provided";
 
-    // Map service technical values to friendly titles
     const serviceTitles = {
-      "brand-strategy": "Brand Strategy & Positioning",
-      "brand-naming": "Brand Naming & Tagline Development",
-      "logo-design": "Logo Design & Visual Identity",
-      "brand-guidelines": "Brand Guidelines Document",
-      "brand-collateral": "Brand Collateral Design",
-      "brand-comm": "Brand Communication Assets",
-      "social-optimization": "Profile Optimization & Branding",
-      "social-strategy": "Social Media Strategy",
-      "social-calendar": "Content Calendar & Scheduling",
+      "brand-strategy": "Brand Strategy", "logo-design": "Logo Design", "color-palette": "Color Palette",
+      "typography-fonts": "Typography / Fonts", "brand-messaging-copywriting": "Brand Messaging & Copywriting",
+      "brand-technology-dev-automation": "Brand Technology, Development & Automation",
+      "social-media-branding": "Social Media Branding", "advertising-creative": "Advertising Creative",
+      "packaging-design": "Packaging Design & Product Presentation",
+      "social-media-graphics-design": "Social Media Graphics Design",
+      "print-stationery-design": "Print & Stationery Design",
+      "profile-optimization-branding": "Profile Optimization & Branding",
+      "social-media-strategy": "Social Media Strategy",
+      "content-calendar-scheduling": "Content Calendar & Scheduling",
       "community-management": "Community Management",
-      "organic-growth": "Organic Growth Optimization",
-      "social-reporting": "Social Media Reporting",
-      "web-strategy": "Website Strategy & Wireframing",
-      "ui-ux-design": "Custom UI/UX Website Design",
-      "frontend-dev": "Front-End Development",
-      "fullstack-dev": "Full-Stack Web Development",
-      "cms-ecommerce": "CMS & E-Commerce Development",
-      "web-automation": "Web Automation & System Integration",
-      "landing-pages": "Landing Pages & Funnels",
-      "seo": "Search Engine Optimization (SEO)",
-      "google-ads": "Google Ads",
-      "meta-ads": "Meta Ads (Facebook & Instagram)",
-      "tiktok-ads": "TikTok Ads",
-      "linkedin-ads": "LinkedIn Ads",
-      "youtube-ads": "YouTube Ads",
-      "whatsapp-ads": "WhatsApp Ads",
-      "snapchat-ads": "Snapchat Ads",
-      "pinterest-ads": "Pinterest Ads",
-      "retargeting-ads": "Retargeting / Remarketing Ads",
-      "programmatic-ads": "Programmatic Ads",
-      "copywriting": "Copywriting & Ad Copy",
-      "ad-creatives": "Ad Creatives Design",
-      "graphic-design": "Graphic Design",
-      "video-production": "Video Production & Editing",
+      "organic-growth-optimization": "Organic Growth Optimization",
+      "social-media-reporting": "Social Media Reporting",
+      "website-design-strategy": "Website Design & Strategy",
+      "web-development-solutions": "Web Development Solutions",
+      "mobile-app-development": "Mobile App Development",
+      "full-stack-development": "Full Stack Development",
+      "content-optimization": "Content & Optimization",
+      "automation-solutions": "Automation Solutions",
+      "google-ads": "Google Ads", "meta-ads": "Meta Ads (Facebook & Instagram)",
+      "tiktok-ads": "TikTok Ads", "linkedin-ads": "LinkedIn Ads",
+      "youtube-ads": "YouTube Ads", "whatsapp-ads": "WhatsApp Ads",
+      "snapchat-ads": "Snapchat Ads", "pinterest-ads": "Pinterest Ads",
+      "retargeting-remarketing-ads": "Retargeting / Remarketing Ads",
+      "programmatic-ads": "Programmatic Ads", "x-twitter-ads": "X/Twitter Ads",
+      "telegram-ads": "Telegram Ads", "copywriting-ad-copy": "Copywriting & Ad Copy",
+      "ad-creatives-design": "Ad Creatives Design", "graphic-design": "Graphic Design",
+      "video-production-editing": "Video Production & Editing",
       "content-writing": "Content Writing",
-      "social-content": "Social Media Content Creation",
-      "motion-graphics": "Motion Graphics & Animation",
-      "creative-campaign": "Creative Campaign Development",
-      "web-pentest": "Web Application Penetration Testing",
-      "android-pentest": "Android Application Penetration Testing",
-      "ios-pentest": "iOS Application Penetration Testing",
+      "social-media-content-creation": "Social Media Content Creation",
+      "motion-graphics-animation": "Motion Graphics & Animation",
+      "creative-campaign-development": "Creative Campaign Development",
+      "web-app-pentest": "Web Application Penetration Testing",
+      "android-app-pentest": "Android Application Penetration Testing",
+      "ios-app-pentest": "iOS Application Penetration Testing",
       "network-pentest": "Network Penetration Testing",
-      "brand-protection": "Digital Brand Protection",
+      "digital-brand-protection": "Digital Brand Protection",
       "other": "Other / Custom Requirement"
     };
-
     const friendlyService = serviceTitles[serviceValue] || serviceValue;
 
-    // Show loading state
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Booking Your Call...`;
+    submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Booking Your Call…`;
+
+    const now = new Date();
+    const submittedAt = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+      + ' at ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
     // Construct AJAX FormSubmit payload
     const payload = {
-      "Full Name": fullName,
-      "Email Address": email,
+      "_subject": "New Brandozer Lead — Free Brand Growth Audit",
+      "_template": "box",
+      "Lead Type": "Free 20-Minute Brand Growth Audit",
+      "Lead Status": "New consultation request",
+      "Lead Summary": "A potential client submitted the Brandozer consultation form and is ready for the next step. Review the details below, then confirm whether the Calendly meeting was booked.",
+      "Recommended Action": "Check Calendly booking. If not booked, follow up by WhatsApp or email within 15 minutes.",
+      "Client Name": fullName,
+      "Client Email": email,
       "WhatsApp / Phone": phone,
-      "Company / Brand Name": company,
-      "Service Required": friendlyService,
-      "Referral Source": sourceValue,
-      "Preferred Date for Call": callTime,
-      "Message / Brief": message,
-      "_subject": `🚀 New Brand Strategy Consultation: ${fullName}`,
-      "_template": "table",
+      "Company / Brand / Website": company,
+      "Service Interest": friendlyService,
+      "Project Goal / Message": message,
+      "Landing Page": "Brandozer Contact Page",
       "_honey": "" // Honeypot field for spam prevention
     };
 
     fetch("https://formsubmit.co/ajax/brandozer.official@gmail.com", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify(payload)
     })
-    .then(response => response.json())
-    .then(data => {
-      // Re-enable submit button
+      .then(r => r.json())
+      .then(() => onSuccess(fullName, email, phone, company, friendlyService, message, submittedAt, originalBtnText))
+      .catch(() => onSuccess(fullName, email, phone, company, friendlyService, message, submittedAt, originalBtnText));
+
+    function onSuccess(fullName, email, phone, company, friendlyService, message, submittedAt, originalBtnText) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnText;
 
-      // Clear the inputs
+      // Reset form
       form.reset();
-      
-      // Reset custom selects
-      document.querySelectorAll('.custom-select-trigger').forEach(trigger => {
-        if (trigger.parentElement.id === 'service-select') {
-          trigger.textContent = 'Select a service…';
-        } else if (trigger.parentElement.id === 'source-select') {
-          trigger.textContent = 'Select an option…';
-        }
+      document.querySelectorAll('.custom-select-trigger').forEach(t => {
+        if (t.closest('#service-select')) t.textContent = 'Select a service…';
       });
       document.querySelectorAll('.custom-option').forEach(o => o.classList.remove('selected'));
 
-      // Construct highly formatted WhatsApp Message
-      const waMessage = `Hi Brandozer! 🚀\nI just submitted a contact form on your website. Here are my project details:\n\n👤 *Name:* ${fullName}\n📧 *Email:* ${email}\n📞 *WhatsApp:* ${phone}\n🏢 *Company:* ${company}\n💼 *Service:* ${friendlyService}\n💡 *Source:* ${sourceValue}\n📅 *Preferred Call Date:* ${callTime}\n\n📝 *Message:*\n${message}`;
-      const waUrl = `https://wa.me/923288672756?text=${encodeURIComponent(waMessage)}`;
+      // Reset country code button to Pakistan
+      const ccFlagEl = document.getElementById('cc-flag');
+      const ccCodeEl = document.getElementById('cc-code');
+      if (ccFlagEl) ccFlagEl.textContent = '🇵🇰';
+      if (ccCodeEl) ccCodeEl.textContent = '+92';
 
-      // Update the success box to look premium and dynamic
+      // ── Beautifully formatted WhatsApp message ──
+      const divider = '━━━━━━━━━━━━━━━━━━━━━━━━━━';
+      const waMsg =
+        `🚀 *NEW BRANDOZER LEAD — FREE BRAND GROWTH AUDIT*
+${divider}
+
+📌 *LEAD INFORMATION*
+• *Lead Type:* Free 20-Minute Brand Growth Audit
+• *Status:* New consultation request
+• *Recommended Action:* Check Calendly booking. If not booked, follow up by WhatsApp or email within 15 minutes.
+
+${divider}
+
+👤 *CLIENT DETAILS*
+• *Client Name:* ${fullName}
+• *Client Email:* ${email}
+• *WhatsApp / Phone:* ${phone}
+• *Company / Brand / Website:* ${company}
+
+${divider}
+
+💼 *PROJECT DETAILS*
+• *Service Interest:* ${friendlyService}
+
+📝 *Project Goal / Message:*
+${message}
+
+${divider}
+🌐 *Landing Page:* Brandozer Contact Page
+🕐 *Submitted:* ${submittedAt}`;
+
+      const waUrl = `https://wa.me/923288672756?text=${encodeURIComponent(waMsg)}`;
+
+      // Show beautiful success card with manual action boxes
       if (successBox) {
         successBox.innerHTML = `
-          <div style="text-align: left;">
-            <h3 style="color: #27AE60; font-family: var(--font-heading); font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-              <i class="fas fa-check-circle"></i> Strategy Call Booked Successfully!
-            </h3>
-            <p style="color: var(--color-white); margin-bottom: 20px; font-size: 15px; line-height: 1.6;">
-              Thank you! We've received your request and logged it to our email inbox (<strong>brandozer.official@gmail.com</strong>). We will get back to you within 24 hours.
-            </p>
-            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-              <a href="${waUrl}" target="_blank" rel="noopener" class="btn-majestic-primary btn-shimmer" style="background: #25D366; border-color: #25D366; color: white !important; font-size: 15px; padding: 14px 28px; border-radius: 4px; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600;">
-                <i class="fab fa-whatsapp" style="font-size: 18px;"></i> Connect Instantly on WhatsApp
-              </a>
+          <div class="success-wa-card">
+            <div class="card-top">
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <div class="card-text">
+                <h4>Form Submitted Successfully!</h4>
+                <p>We've recieved your request. Please choose your preferred next step below.</p>
+              </div>
+            </div>
+            <div class="success-actions-grid">
+              <!-- Calendly Box -->
+              <div class="action-box calendly-box">
+                <i class="far fa-calendar-alt action-box-icon"></i>
+                <h5>Schedule Strategy Call</h5>
+                <p>Pick a date & time on our calendar to lock in your free 30-min strategy session.</p>
+                <button id="manual-cal-trigger" class="cal-trigger-btn">
+                  Book Meeting
+                </button>
+              </div>
+              
+              <!-- WhatsApp Box -->
+              <div class="action-box wa-box">
+                <i class="fab fa-whatsapp action-box-icon"></i>
+                <h5>Connect Instantly</h5>
+                <p>Send your project details directly to our team via WhatsApp for a quicker response.</p>
+                <a href="${waUrl}" target="_blank" rel="noopener" class="wa-send-btn">
+                  Send to WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         `;
         successBox.style.display = 'block';
         successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
 
-      // Automatically attempt to open WhatsApp in a new tab for seamless flow
-      window.open(waUrl, "_blank");
-    })
-    .catch(error => {
-      console.error("Error submitting form:", error);
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnText;
-      
-      // Fallback: If fetch fails, we still let them connect directly on WhatsApp!
-      const waMessage = `Hi Brandozer! 🚀\nI wanted to request a Strategy Call. Here are my project details:\n\n👤 *Name:* ${fullName}\n📧 *Email:* ${email}\n📞 *WhatsApp:* ${phone}\n🏢 *Company:* ${company}\n💼 *Service:* ${friendlyService}\n📅 *Preferred Call Date:* ${callTime}\n\n📝 *Message:*\n${message}`;
-      const waUrl = `https://wa.me/923288672756?text=${encodeURIComponent(waMessage)}`;
-
-      if (successBox) {
-        successBox.innerHTML = `
-          <div style="text-align: left;">
-            <h3 style="color: #e67e22; font-family: var(--font-heading); font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-              <i class="fas fa-exclamation-circle"></i> Network Connection Notice
-            </h3>
-            <p style="color: var(--color-white); margin-bottom: 20px; font-size: 15px; line-height: 1.6;">
-              It looks like we couldn't connect to our email server. No worries! You can click the button below to send your details directly via WhatsApp instead.
-            </p>
-            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-              <a href="${waUrl}" target="_blank" rel="noopener" class="btn-majestic-primary btn-shimmer" style="background: #25D366; border-color: #25D366; color: white !important; font-size: 15px; padding: 14px 28px; border-radius: 4px; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600;">
-                <i class="fab fa-whatsapp" style="font-size: 18px;"></i> Connect on WhatsApp Now
-              </a>
-            </div>
-          </div>
-        `;
-        successBox.style.display = 'block';
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Add event listener to the manual Calendly button
+        const calBtn = document.getElementById('manual-cal-trigger');
+        if (calBtn) {
+          calBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openCalendlyModal(fullName, email, phone);
+          });
+        }
       }
-      window.open(waUrl, "_blank");
+    }
+  });
+
+  // ── Calendly Modal Logic ──
+  function openCalendlyModal(name, email, phone) {
+    const overlay = document.getElementById('calendly-overlay');
+    const clientNameEl = document.getElementById('cal-client-name');
+    const embedContainer = document.getElementById('calendly-embed-container');
+    const loadingEl = document.getElementById('cal-loading');
+    if (!overlay) return;
+
+    if (clientNameEl) clientNameEl.textContent = name;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // ⚠️ Replace the URL below with your actual Calendly event link
+    const calendlyBase = 'https://calendly.com/brandozer-official/30min';
+    const params = new URLSearchParams({
+      name: name,
+      email: email,
+      a1: phone,
+      hide_gdpr_banner: '1',
+      background_color: 'ffffff',
+      text_color: '000000',
+      primary_color: 'C9A84C'
     });
+
+    if (embedContainer) embedContainer.innerHTML = '';
+    if (loadingEl) loadingEl.style.display = 'flex';
+
+    // URLSearchParams uses '+' for spaces, but Calendly expects '%20'
+    // So we replace '+' with '%20' in the final query string
+    const queryString = params.toString().replace(/\+/g, '%20');
+    const fullUrl = `${calendlyBase}?${queryString}`;
+
+    function initWidget() {
+      if (window.Calendly && embedContainer) {
+        Calendly.initInlineWidget({ url: fullUrl, parentElement: embedContainer });
+        // Show timezone hider after widget renders
+        setTimeout(() => {
+          if (loadingEl) loadingEl.style.display = 'none';
+          const tzHider = document.getElementById('cal-tz-hider');
+          if (tzHider) tzHider.style.display = 'block';
+        }, 2500);
+      }
+    }
+
+    if (!window.Calendly) {
+      if (!document.getElementById('calendly-css')) {
+        const link = document.createElement('link');
+        link.id = 'calendly-css';
+        link.rel = 'stylesheet';
+        link.href = 'https://assets.calendly.com/assets/external/widget.css';
+        document.head.appendChild(link);
+      }
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      script.onload = initWidget;
+      document.head.appendChild(script);
+    } else {
+      initWidget();
+    }
+  }
+
+  // Close modal controls
+  const overlay = document.getElementById('calendly-overlay');
+  const closeBtn = document.getElementById('calendly-close-btn');
+
+  function closeModal() {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    const ec = document.getElementById('calendly-embed-container');
+    if (ec) {
+      // Remove iframe but keep the tz hider div
+      const tzHider = document.getElementById('cal-tz-hider');
+      ec.innerHTML = '';
+      if (tzHider) { tzHider.style.display = 'none'; ec.appendChild(tzHider); }
+    }
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  overlay?.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay?.classList.contains('active')) closeModal();
   });
 })();
 
 // ─── Newsletter Form ───
-(function() {
+(function () {
   const form = document.getElementById('newsletter-form');
   if (!form) return;
 
@@ -426,7 +646,7 @@ window.addEventListener('load', () => {
 });
 
 // ─── General Accordion ───
-(function() {
+(function () {
   document.querySelectorAll('.accordion-trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
       const item = trigger.closest('.accordion-item');
